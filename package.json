@@ -8,7 +8,6 @@
 	"url": "https://github.com/caominhim/FactorioCalculator.git"
 	},
 "dependencies":{
-		"type":"git",
-		"rapidjson":"https://github.com/Tencent/rapidjson.git"
-	},
+		"rapidjson":"git://github.com/Tencent/rapidjson.git"
+	}
 }
