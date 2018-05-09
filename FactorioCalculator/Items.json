@@ -1,0 +1,191 @@
+{
+	"categories":[
+		{
+			"prototype":"resource",
+			"items":[
+				{
+					"name":"coal",
+					"miningHardness": 0.9,
+					"miningTime": 2,
+					"fuelValue": 8000000,
+					"vehicleAcceleration": 1
+				},
+				{
+					"name":"Stone",
+					"miningHardness": 0.4,
+					"miningTime": 2,
+				},
+				{
+					"name":"Iron Ore",
+					"miningHardness": 0.9,
+					"miningTime": 2,
+				},
+				{
+					"name":"Copper Ore",
+					"miningHardness": 0.9,
+					"miningTime": 2,
+				},
+				{
+					"name":"Uranium Ore",
+					"miningHardness": 0.9,
+					"miningTime": 4,
+				}
+			]
+		},
+		{
+			"prototype":"fluid",
+			"items":[
+				{
+					"name":"Crude Oil",
+					"RequiredTech":"Oil Processing",
+					"ProduceReq":[
+						"Pumpjack"
+					]
+				},
+				{
+					"name":"Heavy Oil",
+					"RequiredTech":"Oil Processing",
+					"ProduceReq":[
+						"Oil Refinery", "Chemical Plant"
+					]
+				},
+				{
+					"name":"Light Oil",
+					"RequiredTech":"Oil Processing",
+					"ProduceReq":[
+						"Oil Refinery", "Chemical Plant"
+					]
+				},
+				{
+					"name":"Lubricant",
+					"RequiredTech":"Oil Processing",
+					"ProduceReq":[
+						"Chemical Plant"
+					],
+					"ingredients":[
+						{
+							"prototype":"fluid",
+							"name":"Heavy Oil",
+							"count":10
+						}
+					],
+					"craftTime":1
+				},
+				{
+					"name":"Water",
+					"ProduceReq":[
+						"Offshore Pump"
+					]
+				},
+				{
+					"name":"Petroleum Gas",
+					"RequiredTech":"Oil Processing",
+					"ProduceReq":[
+						"Oil Refinery", "Chemical Plant"
+					]
+				},
+				{
+					"name":"Sulfuric Acid",
+					"RequiredTech":"Sulfur Processing",
+					"ProduceReq":[
+						"Chemical Plant"
+					],
+					"ingredients":[
+						{
+							//TODO
+						}
+					]
+				}
+			]
+		},
+		{
+			"prototype":"assemblingMachine",
+			"items":[
+				{
+					"name":"Assembling Machine 1",
+					"dimensionX":3,
+					"dimensionY":3,
+					"energyConsumption":90000,
+					"energyDrain":3000,
+					"ingredients":[
+						{
+							"prototype":"item",
+							"name":"Electronic Circuit",
+							"count":3
+						},
+						{
+							"prototype":"item",
+							"name":"Iron Gear Wheel",
+							"count":5
+						},
+						{
+							"prototype":"item",
+							"name":"Iron Plate",
+							"count":9
+						}
+					],
+					"CraftTime":0.5,
+					"craftSpeed":0.5,
+					"Pollution":3,
+					"ModuleSlots":0
+				},
+				{
+					"name":"Assembling Machine 2",
+					"dimensionX":3,
+					"dimensionY":3,
+					"energyConsumption":150000,
+					"energyDrain":5000,
+					"ingredients":[
+						{
+							"prototype":"assemblingMachine",
+							"name":"Assembling Machine 1",
+							"count":1
+						},
+						{
+							"prototype":"item",
+							"name":"Electronic Circuit",
+							"count":3
+						},
+						{
+							"prototype":"item",
+							"name":"Iron Gear Wheel",
+							"count":5
+						},
+						{
+							"prototype":"item",
+							"name":"Iron Plate",
+							"count":9
+						}
+					],
+					"CraftTime":0.5,
+					"craftSpeed":0.75,
+					"Pollution":2.4,
+					"ModuleSlots":2
+				},
+				{
+					"name":"Assembling Machine 3",
+					"dimensionX":3,
+					"dimensionY":3,
+					"energyConsumption":210000,
+					"energyDrain":7000,
+					"ingredients":[
+						{
+							"prototype":"assemblingMachine",
+							"name":"Assembling Machine 2",
+							"count":2
+						},
+						{
+							"prototype":"module",
+							"name":"Speed Module",
+							"count":4
+						}
+					],
+					"CraftTime":0.5,
+					"craftSpeed":1.25,
+					"Pollution":1.8,
+					"ModuleSlots":4
+				}
+			]
+		}
+	]
+}
