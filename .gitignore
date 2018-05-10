@@ -1,2 +1,5 @@
 node_modules
 .vs/
+FactorioCalculator/Debug/
+Debug/
+FactorioCalculator/*.aps
