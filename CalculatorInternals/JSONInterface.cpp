@@ -22,12 +22,13 @@ void JSONInterface::importJSON(const char* fileName)
 	rapidjson::Document* docu = new rapidjson::Document();
 	docu->Parse(file.c_str());
 	doc = docu;
-	std::cout << doc->IsObject() << std::endl;
+	std::cout << "doc is object? " << doc->IsObject() << std::endl;
 }
 
 JSONInterface::JSONInterface(const char* fileName)
 {
+	std::cout << "doc is null pointer? " << (doc == nullptr) << std::endl;
 	importJSON(fileName);
-	std::cout << (doc == nullptr) << std::endl;
+	std::cout << "doc is null pointer? " <<(doc == nullptr) << std::endl;
 }
 JSONInterface::~JSONInterface() {}
