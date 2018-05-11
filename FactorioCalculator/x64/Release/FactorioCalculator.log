@@ -1,0 +1,32 @@
+﻿  stdafx.cpp
+  FactorioCalculator.cpp
+FactorioCalculator.rc(23): warning RC2182: duplicate dialog control ID 0
+  
+FactorioCalculator.rc(24): warning RC2182: duplicate dialog control ID 0
+  
+FactorioCalculator.rc(25): warning RC2182: duplicate dialog control ID 0
+  
+FactorioCalculator.rc(26): warning RC2182: duplicate dialog control ID 0
+  
+FactorioCalculator.rc(27): warning RC2182: duplicate dialog control ID 0
+  
+FactorioCalculator.rc(29): warning RC2182: duplicate dialog control ID 0
+  
+FactorioCalculator.rc(30): warning RC2182: duplicate dialog control ID 0
+  
+FactorioCalculator.rc(31): warning RC2182: duplicate dialog control ID 0
+  
+FactorioCalculator.rc(32): warning RC2182: duplicate dialog control ID 1
+  
+FactorioCalculator.rc(33): warning RC2182: duplicate dialog control ID 0
+  
+FactorioCalculator.rc(34): warning RC2182: duplicate dialog control ID 0
+  
+FactorioCalculator.rc(35): warning RC2182: duplicate dialog control ID 0
+  
+FactorioCalculator.rc(36): warning RC2182: duplicate dialog control ID 0
+  
+  Generating code
+  All 5 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  FactorioCalculator.vcxproj -> D:\Development\github\FactorioCalculator\x64\Release\FactorioCalculator.exe
