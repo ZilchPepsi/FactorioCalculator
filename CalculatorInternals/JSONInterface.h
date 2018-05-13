@@ -3,7 +3,6 @@
 
 class JSONInterface
 {
-
 	void importJSON(const char*);
 
 public:

@@ -3,13 +3,16 @@
 
 int main()
 {
-	JSONInterface items("testFile.json");
+	JSONInterface items("items.json");
+	
+	const rapidjson::Value& a = (*items.doc)["prototypes"];
 
-	/*
-	const rapidjson::value& a = (*items.doc)["prototypes"];
+	std::cout << a.IsNull() << std::endl;
+	std::cout << a.IsArray() << std::endl;
+	std::cout << a.Capacity() << std::endl;
 
-	for (rapidjson::sizetype i = 0; i < a.size(); i++)
-		std::cout << a["prototype"].GetString() << std::endl;*/
-
+	for (rapidjson::SizeType i = 0; i < a.Size(); i++)
+		std::cout << a[i]["prototype"].GetString() << std::endl;
+	
 	return 0;
 }

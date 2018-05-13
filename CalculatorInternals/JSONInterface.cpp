@@ -14,29 +14,24 @@ void JSONInterface::importJSON(const char* fileName)
 
 	std::string file;
 
-	while (!jsonFile.eof())
+	char a;
+	while ((a = jsonFile.get()) != -1)
 	{
-		char a = jsonFile.get();
-		
-		if((int)a != -1)
 			file += a;
 	}
 
 	jsonFile.close();
 
-	rapidjson::Document* docu = new rapidjson::Document();
+	doc = new rapidjson::Document();
 
-	docu->Parse(file.c_str());
-	doc = docu;
-
-	std::cout << "doc is null object? " << docu->IsNull() << std::endl;
-	std::cout << "getting attribute of 'hello'..." << std::endl;
-	rapidjson::Value& s = (*doc)["hello"];
-	std::cout << s.GetString() << std::endl;
+	doc->Parse(file.c_str());
 }
 
 JSONInterface::JSONInterface(const char* fileName)
 {
 	importJSON(fileName);
 }
-JSONInterface::~JSONInterface() {}
+JSONInterface::~JSONInterface()
+{
+	delete doc;
+}
