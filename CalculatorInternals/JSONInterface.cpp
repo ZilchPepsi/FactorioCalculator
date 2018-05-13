@@ -16,32 +16,23 @@ void JSONInterface::importJSON(const char* fileName)
 
 	while (!jsonFile.eof())
 	{
-		file += jsonFile.get();
+		char a = jsonFile.get();
+		
+		if((int)a != -1)
+			file += a;
 	}
 
 	jsonFile.close();
 
-	const char* f = "{\"hello\": \"world\",\"t\" : true,\"f\" : false,\"n\" : null,\"i\" : 123,\"pi\" : 3.1416,\"a\" : [1, 2, 3, 4]";
-
 	rapidjson::Document* docu = new rapidjson::Document();
-	rapidjson::Document* testDoc = new rapidjson::Document();
 
-	//put the string 'file' into char sequence c
-	char* c = new char[file.length()+1];
-	for (int x = 0; x < file.length(); x++)
-		c[x] = file[x];
-	c[file.length()] = NULL;
-	////////////////////////////////////////////
-
-
-	std::cout << "printing file..." << std::endl;
-
-	docu->Parse(c);
+	docu->Parse(file.c_str());
 	doc = docu;
 
 	std::cout << "doc is null object? " << docu->IsNull() << std::endl;
 	std::cout << "getting attribute of 'hello'..." << std::endl;
 	rapidjson::Value& s = (*doc)["hello"];
+	std::cout << s.GetString() << std::endl;
 }
 
 JSONInterface::JSONInterface(const char* fileName)
