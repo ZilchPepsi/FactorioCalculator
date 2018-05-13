@@ -1,8 +1,6 @@
 #include "JSONInterface.h"
 #include <iostream>
 
-#define WINPAUSE system("pause")
-
 int main()
 {
 	JSONInterface items("testFile.json");
