@@ -1,18 +1,13 @@
-#include "JSONInterface.h"
 #include <iostream>
+
+#include "FactorioCalculator.h"
 
 int main()
 {
-	JSONInterface items("items.json");
-	
-	const rapidjson::Value& a = (*items.doc)["prototypes"];
+	FactorioCalculator calc("Items.json");
 
-	std::cout << a.IsNull() << std::endl;
-	std::cout << a.IsArray() << std::endl;
-	std::cout << a.Capacity() << std::endl;
 
-	for (rapidjson::SizeType i = 0; i < a.Size(); i++)
-		std::cout << a[i]["prototype"].GetString() << std::endl;
-	
+	std::cout << calc.calculateFactorySetup("Coal", 5) << std::endl;
+
 	return 0;
 }

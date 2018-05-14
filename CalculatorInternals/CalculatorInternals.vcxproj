@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="FactorioCalculator.cpp" />
     <ClCompile Include="JSONInterface.cpp" />
     <ClCompile Include="TestMain.cpp" />
   </ItemGroup>
@@ -27,6 +28,8 @@
     <None Include="testFile.json" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Calculator.h" />
+    <ClInclude Include="FactorioCalculator.h" />
     <ClInclude Include="JSONInterface.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

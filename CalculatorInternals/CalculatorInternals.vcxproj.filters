@@ -21,6 +21,9 @@
     <ClCompile Include="JSONInterface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FactorioCalculator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Items.json">
@@ -32,6 +35,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="JSONInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Calculator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FactorioCalculator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
