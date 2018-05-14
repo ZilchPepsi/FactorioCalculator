@@ -81,14 +81,10 @@ struct FactorioCalculations::Resource JSONInterface::makeResource(rapidjson::Val
 	std::cout << "type: " << json::kTypeNames[val.GetType()] << std::endl;
 
 	std::cout << "Working on resource: " << val["name"].GetString() << std::endl;
-	for (rapidjson::Value::ValueIterator itr = val.Begin();
-		itr != val.End(); itr++)
+	for (rapidjson::Value::ConstMemberIterator itr = val.MemberBegin();
+		itr != val.MemberEnd(); itr++)
 	{
-		itr.
-
-		std::cout << "iterator null?: " << itr->IsNull() << std::endl;
-		std::cout << "iterator type: " << json::kTypeNames[itr->GetType()] << std::endl;
-		std::cout << "found this: "<< itr->GetString() << std::endl;
+		std::cout << "name: " << itr->name.GetString() << " type: " << json::kTypeNames[itr->value.GetType()] << std::endl;
 	}
 
 	r.name = val["name"].GetString();
