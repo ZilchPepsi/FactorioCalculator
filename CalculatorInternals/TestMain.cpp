@@ -6,8 +6,9 @@ int main()
 {
 	FactorioCalculator calc("Items.json");
 
+	std::vector<struct FactorioCalculator::FactorySetup> factory;
 
-	std::cout << calc.calculateFactorySetup("Coal", 5) << std::endl;
+	calc.calculateFactorySetup("Coal", 5, factory);
 
 	return 0;
 }

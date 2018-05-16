@@ -1,7 +1,7 @@
 {
   "prototypes": [
     {
-      "prototype": "resource",
+      "prototype": "RESOURCE",
       "items": [
         {
           "name": "Coal",
@@ -39,7 +39,7 @@
       ]
     },
     {
-      "prototype": "fluid",
+      "prototype": "FLUID",
       "items": [
         {
           "name": "Crude Oil",
@@ -57,50 +57,50 @@
           "requiredTech": "Oil Processing",
           "produceReq": [
             {
-              "prototype": "assemblingMachine",
+              "prototype": "ASSEMBLINGMACHINE",
               "name": "Oil Refinery"
             },
             {
-              "prototype": "assemblingMachine",
+              "prototype": "ASSEMBLINGMACHINE",
               "name": "Chemical Plant"
             }
           ],
-          "craftMethod":"process"
+          "craftMethod":"PROCESS"
         },
         {
           "name": "Light Oil",
           "requiredTech": "Oil Processing",
           "produceReq": [
             {
-              "prototype": "assemblingMachine",
+              "prototype": "ASSEMBLINGMACHINE",
               "name": "Oil Refinery"
             },
             {
-              "prototype": "assemblingMachine",
+              "prototype": "ASSEMBLINGMACHINE",
               "name": "Chemical Plant"
             }
           ],
-          "craftMethod":"process"
+          "craftMethod":"PROCESS"
         },
         {
           "name": "Lubricant",
           "requiredTech": "Oil Processing",
           "produceReq": [
             {
-              "prototype": "assemblingMachine",
+              "prototype": "ASSEMBLINGMACHINE",
               "name": "Chemical Plant"
             }
           ],
           "ingredients": [
             {
-              "prototype": "fluid",
+              "prototype": "FLUID",
               "name": "Heavy Oil",
               "count": 10
             }
           ],
           "craftTime": 1,
           "outputCount": 10,
-          "craftMethod":"process"
+          "craftMethod":"PROCESS"
         },
         {
           "name": "Water",
@@ -117,33 +117,33 @@
           "requiredTech": "Oil Processing",
           "produceReq": [
             {
-              "prototype": "assemblingMachine",
+              "prototype": "ASSEMBLINGMACHINE",
               "name": "Oil Refinery"
             },
             {
-              "prototype": "assemblingMachine",
+              "prototype": "ASSEMBLINGMACHINE",
               "name": "Chemical Plant"
             }
           ],
-          "craftMethod":"process"
+          "craftMethod":"PROCESS"
         },
         {
           "name": "Sulfuric Acid",
           "requiredTech": "Sulfur Processing",
           "produceReq": [
             {
-              "prototype": "assemblingMachine",
+              "prototype": "ASSEMBLINGMACHINE",
               "name": "Chemical Plant"
             }
           ],
           "ingredients": [
             {
-              "prototype": "item",
+              "prototype": "ITEM",
               "name": "Iron Plate",
               "count": 1
             },
             {
-              "prototype": "item",
+              "prototype": "ITEM",
               "name": "Sulfur",
               "count": 5
             },
@@ -172,7 +172,7 @@
       ]
     },
     {
-      "prototype": "assemblingMachine",
+      "prototype": "ASSEMBLINGMACHINE",
       "items": [
         {
           "name": "Assembling Machine 1",
@@ -182,17 +182,17 @@
           "energyDrain": 3000,
           "ingredients": [
             {
-              "prototype": "item",
+              "prototype": "ITEM",
               "name": "Electronic Circuit",
               "count": 3
             },
             {
-              "prototype": "item",
+              "prototype": "ITEM",
               "name": "Iron Gear Wheel",
               "count": 5
             },
             {
-              "prototype": "item",
+              "prototype": "ITEM",
               "name": "Iron Plate",
               "count": 9
             }
@@ -210,22 +210,22 @@
           "energyDrain": 5000,
           "ingredients": [
             {
-              "prototype": "assemblingMachine",
+              "prototype": "ASSEMBLINGMACHINE",
               "name": "Assembling Machine 1",
               "count": 1
             },
             {
-              "prototype": "item",
+              "prototype": "ITEM",
               "name": "Electronic Circuit",
               "count": 3
             },
             {
-              "prototype": "item",
+              "prototype": "ITEM",
               "name": "Iron Gear Wheel",
               "count": 5
             },
             {
-              "prototype": "item",
+              "prototype": "ITEM",
               "name": "Iron Plate",
               "count": 9
             }
@@ -243,7 +243,7 @@
           "energyDrain": 7000,
           "ingredients": [
             {
-              "prototype": "assemblingMachine",
+              "prototype": "ASSEMBLINGMACHINE",
               "name": "Assembling Machine 2",
               "count": 2
             },
@@ -266,12 +266,12 @@
           "energyDrain": 14000,
           "ingredients": [
             {
-              "prototype": "item",
+              "prototype": "ITEM",
               "name": "Electronic Circuit",
               "count": 10
             },
             {
-              "prototype": "item",
+              "prototype": "ITEM",
               "name": "Iron Gear Wheel",
               "count": 10
             },
@@ -281,12 +281,12 @@
               "count": 10
             },
             {
-              "prototype": "item",
+              "prototype": "ITEM",
               "name": "Steel Plate",
               "count": 15
             },
             {
-              "prototype": "item",
+              "prototype": "ITEM",
               "name": "Stone Brick",
               "count": 10
             }
@@ -300,13 +300,13 @@
       ]
     },
     {
-      "prototype": "item",
+      "prototype": "ITEM",
       "items": [
         {
           "name": "Wood",
           "ingredients": [
             {
-              "prototype": "resource",
+              "prototype": "RESOURCE",
               "name": "Raw Wood",
               "count": 1
             }
@@ -318,7 +318,7 @@
           "name": "Iron Plate",
           "ingredients": [
             {
-              "prototype": "resource",
+              "prototype": "RESOURCE",
               "name": "Iron Ore",
               "count": 1
             }
@@ -330,7 +330,7 @@
           "name": "Copper Plate",
           "ingredients": [
             {
-              "prototype": "resource",
+              "prototype": "RESOURCE",
               "name": "Copper Ore",
               "count": 1
             }
@@ -342,7 +342,7 @@
           "name": "Iron Gear Wheel",
           "ingredients": [
             {
-              "prototype": "item",
+              "prototype": "ITEM",
               "name": "Iron Plate",
               "count": 2
             }
@@ -352,7 +352,7 @@
       ]
     },
     {
-      "prototype": "process",
+      "prototype": "PROCESS",
       "items": [
         {
           "name": "Basic Oil Processing",
@@ -470,7 +470,7 @@
           "RequiredTech": "Coal Liquefaction",
           "inputs": [
             {
-              "prototype": "resource",
+              "prototype": "RESOURCE",
               "name": "Coal",
               "count": 10
             },

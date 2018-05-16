@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <iostream>
+#include <cctype>
 
 
 using namespace json;
@@ -55,7 +56,8 @@ const struct FactorioCalculations::Element JSONInterface::getValue(const char* s
 
 				for (int x = 0; x < FactorioCalculations::ProtoTypeCount; x++)
 				{
-					if (strcmp(proto, FactorioCalculations::ProtoType_strings[x]))
+					
+					if (!strcmp(proto, FactorioCalculations::ProtoType_strings[x]))
 					{
 						switch (x)
 						{
@@ -76,19 +78,8 @@ struct FactorioCalculations::Resource JSONInterface::makeResource(rapidjson::Val
 {
 	FactorioCalculations::Resource r;
 	r.prototype = FactorioCalculations::Prototypes::RESOURCE;
-
-	std::cout << "passsed null?: " << val.IsNull() << std::endl;
-	std::cout << "type: " << json::kTypeNames[val.GetType()] << std::endl;
-
-	std::cout << "Working on resource: " << val["name"].GetString() << std::endl;
-	for (rapidjson::Value::ConstMemberIterator itr = val.MemberBegin();
-		itr != val.MemberEnd(); itr++)
-	{
-		std::cout << "name: " << itr->name.GetString() << " type: " << json::kTypeNames[itr->value.GetType()] << std::endl;
-	}
-
 	r.name = val["name"].GetString();
-	r.miningHardness = val["miningHardnes"].GetDouble();
+	r.miningHardness = val["miningHardness"].GetDouble();
 	r.miningTime = val["miningTime"].GetDouble();
 	
 	return r;
