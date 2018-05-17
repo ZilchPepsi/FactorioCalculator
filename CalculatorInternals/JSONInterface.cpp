@@ -40,14 +40,16 @@ JSONInterface::~JSONInterface()
 	delete doc;
 }
 
-const struct FactorioCalculations::Element JSONInterface::getValue(const char* s)
+const struct FactorioCalculations::Element* JSONInterface::getValue(const char* s)
 {
 	using namespace rapidjson;
 
 	const Value& root = (*doc)["prototypes"];
 
+	//cycle protos
 	for (auto& protos : root.GetArray())
 	{
+		//cycle objects in proto
 		for (auto& thing : protos["items"].GetArray())
 		{
 			if (!strcmp(thing["name"].GetString(), s))
@@ -56,33 +58,85 @@ const struct FactorioCalculations::Element JSONInterface::getValue(const char* s
 
 				for (int x = 0; x < FactorioCalculations::ProtoTypeCount; x++)
 				{
-					
-					if (!strcmp(proto, FactorioCalculations::ProtoType_strings[x]))
+					if (!strcmp(proto, FactorioCalculations::Prototype_strings[x]))
 					{
 						switch (x)
 						{
 						case 0: return makeResource((rapidjson::Value&)thing);
+						case 4: return makeMiner((rapidjson::Value&)thing);
 						}
 					}
+				}
+				//if you got here, then the prototype is not recognized
+				assert(false);
+				return NULL;
+			}
+		}
+	}
+	assert(false);
+	return NULL;
+}
+
+const struct FactorioCalculations::Element* JSONInterface::getValueWithHint(const char* s, const char* proto)
+{
+	using namespace rapidjson;
+
+	const Value& root = (*doc)["prototypes"];
+	
+	for (auto& prototype : root.GetArray())
+	{
+		if (!strcmp(prototype["prototype"].GetString(), proto))
+		{
+			for (auto& thing : prototype["items"].GetArray())
+			{
+				if (!strcmp(thing["name"].GetString(), s))
+				{
+					for (int x = 0; x < FactorioCalculations::ProtoTypeCount; x++)
+					{
+						if (!strcmp(proto, FactorioCalculations::Prototype_strings[x]))
+						{
+							switch (x)
+							{
+							case 0: return makeResource((rapidjson::Value&)thing);
+							case 4: return makeMiner((rapidjson::Value&)thing);
+							//TODO fill out this switch like the function above
+							}
+						}
+					}
+					//if you got here, then the prototype is not recognized
 					assert(false);
-					return FactorioCalculations::Element();
+					return NULL;
 				}
 			}
 		}
 	}
 	assert(false);
-	return FactorioCalculations::Element();
+	return NULL;
 }
 
-struct FactorioCalculations::Resource JSONInterface::makeResource(rapidjson::Value& val)
+struct FactorioCalculations::Resource* JSONInterface::makeResource(rapidjson::Value& val)
 {
-	FactorioCalculations::Resource r;
-	r.prototype = FactorioCalculations::Prototypes::RESOURCE;
-	r.name = val["name"].GetString();
-	r.miningHardness = val["miningHardness"].GetDouble();
-	r.miningTime = val["miningTime"].GetDouble();
-	
+	FactorioCalculations::Resource* r = new FactorioCalculations::Resource;
+	r->prototype = FactorioCalculations::Prototypes::RESOURCE;
+	r->name = val["name"].GetString();
+	r->miningHardness = val["miningHardness"].GetDouble();
+	r->miningTime = val["miningTime"].GetDouble();
+
 	return r;
+}
+
+struct FactorioCalculations::Miner* JSONInterface::makeMiner(rapidjson::Value& val)
+{
+	FactorioCalculations::Miner* m = new FactorioCalculations::Miner;
+
+	m->prototype = FactorioCalculations::Prototypes::MINING_DRILL;
+	m->name = val["name"].GetString();
+	m->energyConsumption = val["energyConsumption"].GetInt64();
+	m->craftTime = val["craftTime"].GetFloat();
+	m->miningPower = val["miningPower"].GetFloat();
+	m->miningSpeed = val["miningSpeed"].GetFloat();
+
+	return m;
 }
 
 

@@ -1,5 +1,6 @@
 #include "FactorioCalculator.h"
 #include <iostream>
+#include <cmath>
 
 FactorioCalculator::FactorioCalculator(const char* fileName) : jsonInterface(fileName)
 {
@@ -26,19 +27,32 @@ struct FactorioCalculator::FactorySetup* FactorioCalculator::contains(std::vecto
 
 void FactorioCalculator::calculateFactorySetup(const char* element, double rate, std::vector <struct FactorySetup>& factorySetup)
 {
+	using namespace FactorioCalculations;
+
+
 	//get element information (struct)
-	FactorioCalculations::Element el = jsonInterface.getValue(element);
+	const Element* el = jsonInterface.getValue(element);
 
 	//some prototypes need to be broken down more, some don't
-	switch (el.prototype)
+	switch (el->prototype)
 	{
-	case FactorioCalculations::Prototypes::RESOURCE:
+	case Prototypes::RESOURCE:
+		Resource* r = (Resource*)el;
+		Miner* miner = (Miner*)jsonInterface.getValueWithHint("Electric Mining Drill", Prototype_strings[Prototypes::MINING_DRILL]);
+
+		double miningSpeed = getMiningSpeed(miner, r);
+		std::cout << "mining speed: " << miningSpeed<< std::endl;
+		std::cout << "desired speed: " << rate << std::endl;
+
+
+		std::cout << std::ceil(rate / miningSpeed) << std::endl;
+
+		delete miner;
 		break;
 	}
-
-
-
 	//if this element is already in the list, just add to the requirements
-	if (FactorioCalculator::FactorySetup* elementSetup = contains(factorySetup, el));
+	//if (FactorioCalculator::FactorySetup* elementSetup = contains(factorySetup, el));
 
+
+	delete el;
 }

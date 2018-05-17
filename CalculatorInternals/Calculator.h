@@ -2,6 +2,7 @@
 #define CALCULATOR
 
 #include <map>
+#include <iostream>
 
 /*
 	This namespace contains utility functions for Factorio calculations
@@ -12,21 +13,23 @@ namespace FactorioCalculations {
 	/////////////////////////////////////////////////////////
 	////prototypes
 	/////////////////////////////////////////////////////////
-	const int ProtoTypeCount = 5;
+	const int ProtoTypeCount = 6;
 
 	enum Prototypes {
 		RESOURCE,
 		FLUID,
 		ASSEMBLINGMACHINE,
 		ITEM,
+		MINING_DRILL,
 		PROCESS
 	};
 
-	static const char* ProtoType_strings[] = {
+	static const char* Prototype_strings[] = {
 		"RESOURCE",
 		"FLUID",
 		"ASSEMBLINGMACHINE",
 		"ITEM",
+		"MINING_DRILL",
 		"PROCESS"
 	};
 
@@ -43,17 +46,30 @@ namespace FactorioCalculations {
 
 
 	struct Resource : Element {
+		
 		double miningHardness;
 		double miningTime;
 	};
 	
-	struct fluid : Element {
+	struct Fluid : Element {
+
+	};
+	struct Miner : Element {
+		
+		long energyConsumption;
+		float craftTime;
+		float miningPower;
+		float miningSpeed;
 
 	};
 
-	static double getMiningSpeed(double miningPower, double miningHardness,double miningSpeed, double miningTime)
+
+	/*
+		returns the  rate (resources/sec) at which a resource is mined using a miner
+	*/
+	static double getMiningSpeed(Miner* m, Resource* r)
 	{
-		return (miningPower - miningHardness)*(miningSpeed / miningTime);
+		return (m->miningPower - r->miningHardness) * (m->miningPower / r->miningTime);
 	}
 
 	static double getBuildSpeed(double craftingTime, double craftingSpeed)

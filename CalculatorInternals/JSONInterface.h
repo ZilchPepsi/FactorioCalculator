@@ -16,7 +16,8 @@ namespace json {
 		void importJSON(const char*);
 		rapidjson::Document* doc;
 
-		struct FactorioCalculations::Resource makeResource(rapidjson::Value&);
+		struct FactorioCalculations::Resource* makeResource(rapidjson::Value&);
+		struct FactorioCalculations::Miner* makeMiner(rapidjson::Value&);
 		/*struct FactorioCalculations::Resource makeFluid(rapidjson::Value&);
 		struct FactorioCalculations::Resource makeAssemblingMachine(rapidjson::Value&);
 		struct FactorioCalculations::Resource makeItem(rapidjson::Value&);
@@ -30,7 +31,9 @@ namespace json {
 		gets the value represented by the string passed
 		@param char* the variable name
 		*/
-		const struct FactorioCalculations::Element getValue(const char*);
+		const struct FactorioCalculations::Element* getValue(const char*);
+
+		const struct FactorioCalculations::Element* getValueWithHint(const char* name , const char* prototype);
 
 		/*
 		checks if a given value exists

@@ -352,6 +352,40 @@
       ]
     },
     {
+      "prototype": "MINING_DRILL",
+      "items": [
+        {
+          "name": "Electric Mining Drill",
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Electronic Circuit",
+              "count": 3
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Iron Gear Wheel",
+              "count": 5
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Iron Plate",
+              "count": 10
+            }
+          ],
+          "craftTime": 2,
+          "miningPower": 3,
+          "miningSpeed": 0.5,
+          "dimensionX": 3,
+          "dimensionY": 3,
+          "energyConsumption": 90000,
+          "miningAreaX": 5,
+          "miningAreaY": 5
+        }
+      ]
+
+    },
+    {
       "prototype": "PROCESS",
       "items": [
         {
