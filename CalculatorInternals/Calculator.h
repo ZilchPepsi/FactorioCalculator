@@ -69,7 +69,7 @@ namespace FactorioCalculations {
 	*/
 	static double getMiningSpeed(Miner* m, Resource* r)
 	{
-		return (m->miningPower - r->miningHardness) * (m->miningPower / r->miningTime);
+		return (m->miningPower - r->miningHardness) * (m->miningSpeed / r->miningTime);
 	}
 
 	static double getBuildSpeed(double craftingTime, double craftingSpeed)
