@@ -1,16 +1,17 @@
 ﻿  stdafx.cpp
   FactorioCalculator.cpp
-FactorioCalculator.cpp(182): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
-FactorioCalculator.cpp(185): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
-FactorioCalculator.cpp(198): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
-FactorioCalculator.cpp(199): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
-FactorioCalculator.cpp(200): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
-FactorioCalculator.cpp(201): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
-FactorioCalculator.cpp(203): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
-FactorioCalculator.cpp(204): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
-FactorioCalculator.cpp(207): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
 FactorioCalculator.cpp(210): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
+FactorioCalculator.cpp(213): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
+FactorioCalculator.cpp(216): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
+FactorioCalculator.cpp(217): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
+FactorioCalculator.cpp(218): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
+FactorioCalculator.cpp(219): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
+FactorioCalculator.cpp(221): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
+FactorioCalculator.cpp(222): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
+FactorioCalculator.cpp(225): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
+FactorioCalculator.cpp(228): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
+  GuiEventHandler.cpp
   Generating code
-  All 66 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  All 223 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
   FactorioCalculator.vcxproj -> D:\Development\github\FactorioCalculator\x64\Release\FactorioCalculator.exe
