@@ -1,32 +1,16 @@
 ﻿  stdafx.cpp
   FactorioCalculator.cpp
-FactorioCalculator.rc(19): warning RC2182: duplicate dialog control ID 0
-  
-FactorioCalculator.rc(20): warning RC2182: duplicate dialog control ID 0
-  
-FactorioCalculator.rc(21): warning RC2182: duplicate dialog control ID 0
-  
-FactorioCalculator.rc(22): warning RC2182: duplicate dialog control ID 0
-  
-FactorioCalculator.rc(23): warning RC2182: duplicate dialog control ID 0
-  
-FactorioCalculator.rc(25): warning RC2182: duplicate dialog control ID 0
-  
-FactorioCalculator.rc(26): warning RC2182: duplicate dialog control ID 0
-  
-FactorioCalculator.rc(27): warning RC2182: duplicate dialog control ID 0
-  
-FactorioCalculator.rc(28): warning RC2182: duplicate dialog control ID 1
-  
-FactorioCalculator.rc(29): warning RC2182: duplicate dialog control ID 0
-  
-FactorioCalculator.rc(30): warning RC2182: duplicate dialog control ID 0
-  
-FactorioCalculator.rc(31): warning RC2182: duplicate dialog control ID 0
-  
-FactorioCalculator.rc(32): warning RC2182: duplicate dialog control ID 0
-  
+FactorioCalculator.cpp(182): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
+FactorioCalculator.cpp(185): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
+FactorioCalculator.cpp(198): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
+FactorioCalculator.cpp(199): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
+FactorioCalculator.cpp(200): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
+FactorioCalculator.cpp(201): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
+FactorioCalculator.cpp(203): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
+FactorioCalculator.cpp(204): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
+FactorioCalculator.cpp(207): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
+FactorioCalculator.cpp(210): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
   Generating code
-  All 5 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  All 66 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
   FactorioCalculator.vcxproj -> D:\Development\github\FactorioCalculator\x64\Release\FactorioCalculator.exe
