@@ -1,0 +1,13 @@
+﻿  stdafx.cpp
+d:\development\github\factoriocalculator\factorio_calc\FactorioCalculator.h(18): warning C4251: 'FactorioCalculator::jsonInterface': class 'json::JSONInterface' needs to have dll-interface to be used by clients of class 'FactorioCalculator'
+  d:\development\github\factoriocalculator\factorio_calc\JSONInterface.h(15): note: see declaration of 'json::JSONInterface'
+  dllmain.cpp
+  FactorioCalculator.cpp
+  Factorio_Calc.cpp
+  JSONInterface.cpp
+JSONInterface.cpp(127): warning C4244: '=': conversion from 'int64_t' to 'long', possible loss of data
+     Creating library D:\Development\github\FactorioCalculator\x64\Release\Factorio_Calc.lib and object D:\Development\github\FactorioCalculator\x64\Release\Factorio_Calc.exp
+  Generating code
+  All 596 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Factorio_Calc.vcxproj -> D:\Development\github\FactorioCalculator\x64\Release\Factorio_Calc.dll

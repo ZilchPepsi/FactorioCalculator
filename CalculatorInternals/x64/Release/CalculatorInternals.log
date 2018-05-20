@@ -1,8 +1,0 @@
-﻿  FactorioCalculator.cpp
-  JSONInterface.cpp
-JSONInterface.cpp(127): warning C4244: '=': conversion from 'int64_t' to 'long', possible loss of data
-  TestMain.cpp
-  Generating code
-  All 114 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
-  Finished generating code
-  CalculatorInternals.vcxproj -> D:\Development\github\FactorioCalculator\x64\Release\CalculatorInternals.dll

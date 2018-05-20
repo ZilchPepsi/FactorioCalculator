@@ -1,17 +1,4 @@
 ﻿  stdafx.cpp
-  FactorioCalculatorGUI.cpp
-FactorioCalculatorGUI.cpp(210): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
-FactorioCalculatorGUI.cpp(213): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
-FactorioCalculatorGUI.cpp(216): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
-FactorioCalculatorGUI.cpp(217): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
-FactorioCalculatorGUI.cpp(218): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
-FactorioCalculatorGUI.cpp(219): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
-FactorioCalculatorGUI.cpp(221): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
-FactorioCalculatorGUI.cpp(222): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
-FactorioCalculatorGUI.cpp(225): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
-FactorioCalculatorGUI.cpp(228): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
-  GuiEventHandler.cpp
-  Generating code
-  All 223 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
-  Finished generating code
-  FactorioCalculator.vcxproj -> D:\Development\github\FactorioCalculator\x64\Release\FactorioCalculator.exe
+D:\Development\github\FactorioCalculator\Factorio_Calc\FactorioCalculator.h(18): warning C4251: 'FactorioCalculator::jsonInterface': class 'json::JSONInterface' needs to have dll-interface to be used by clients of class 'FactorioCalculator'
+  d:\development\github\factoriocalculator\factorio_calc\JSONInterface.h(15): note: see declaration of 'json::JSONInterface'
+d:\development\github\factoriocalculator\factoriocalculator\GuiEventHandler.h(40): error C2059: syntax error: 'string'

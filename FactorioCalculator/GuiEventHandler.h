@@ -36,7 +36,7 @@ class GuiEventHandler
 		vector<std::wstring> per_items = { L"sec", L"min", L"hour", L"galactic year" };
 		vector<std::wstring> output_items = { L"init item 0", L"init item 1" };
 
-		//std::vector<struct FactorioCalculator::FactorySetup*> factory;
-		//FactorioCalculator calc("Items.json");
+		std::vector<struct FactorioCalculator::FactorySetup*> factory;
+		FactorioCalculator calc("Items.json");
 };
 
