@@ -21,9 +21,6 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FactorioCalculator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GuiEventHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -32,10 +29,10 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FactorioCalculator.cpp">
+    <ClCompile Include="GuiEventHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GuiEventHandler.cpp">
+    <ClCompile Include="FactorioCalculatorGUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

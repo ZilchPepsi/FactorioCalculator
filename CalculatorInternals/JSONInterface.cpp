@@ -2,7 +2,10 @@
 #include <fstream>
 #include <string>
 #include <iostream>
+#include <cctype>
 
+
+using namespace json;
 
 /*
 	imports a json file and puts it into a rapidjson::Document
@@ -14,21 +17,188 @@ void JSONInterface::importJSON(const char* fileName)
 
 	std::string file;
 
-	while (!jsonFile.eof())
+	char a;
+	while ((a = jsonFile.get()) != -1)
 	{
-		file += jsonFile.get();
+			file += a;
 	}
 
-	rapidjson::Document* docu = new rapidjson::Document();
-	docu->Parse(file.c_str());
-	doc = docu;
-	std::cout << "doc is object? " << doc->IsObject() << std::endl;
+	jsonFile.close();
+
+	doc = new rapidjson::Document();
+
+	doc->Parse(file.c_str());
 }
 
 JSONInterface::JSONInterface(const char* fileName)
 {
-	std::cout << "doc is null pointer? " << (doc == nullptr) << std::endl;
 	importJSON(fileName);
-	std::cout << "doc is null pointer? " <<(doc == nullptr) << std::endl;
 }
-JSONInterface::~JSONInterface() {}
+
+JSONInterface::~JSONInterface()
+{
+	delete doc;
+}
+
+const struct FactorioCalculations::Element* JSONInterface::getValue(const char* s)
+{
+	using namespace rapidjson;
+
+	const Value& root = (*doc)["prototypes"];
+
+	//cycle protos
+	for (auto& protos : root.GetArray())
+	{
+		//cycle objects in proto
+		for (auto& thing : protos["items"].GetArray())
+		{
+			if (!strcmp(thing["name"].GetString(), s))
+			{
+				switch (FactorioCalculations::getPrototype(protos["prototype"].GetString()))
+				{
+					using namespace FactorioCalculations;
+				case Prototypes::RESOURCE:		return makeResource((rapidjson::Value&)thing);
+				case Prototypes::ITEM:			return makeItem((rapidjson::Value&)thing);
+				case Prototypes::MINING_DRILL:	return makeMiner((rapidjson::Value&)thing);
+				case Prototypes::FURNACE:		return makeFurnace((rapidjson::Value&)thing);
+				}
+				//if you got here, then the prototype is not recognized or the switch doesn't have that prototype yet
+				assert(false);
+				return NULL;
+			}
+		}
+	}
+	assert(false);
+	return NULL;
+}
+
+const struct FactorioCalculations::Element* JSONInterface::getValueWithHint(const char* s, const char* proto)
+{
+	using namespace rapidjson;
+
+	const Value& root = (*doc)["prototypes"];
+	
+	for (auto& prototype : root.GetArray())
+	{
+		if (!strcmp(prototype["prototype"].GetString(), proto))
+		{
+			for (auto& thing : prototype["items"].GetArray())
+			{
+				if (!strcmp(thing["name"].GetString(), s))
+				{
+
+					switch (FactorioCalculations::getPrototype(proto))
+					{
+						using namespace FactorioCalculations;
+					case Prototypes::RESOURCE:		return makeResource((rapidjson::Value&)thing);
+					case Prototypes::ITEM:			return makeItem((rapidjson::Value&)thing);
+					case Prototypes::MINING_DRILL:	return makeMiner((rapidjson::Value&)thing);
+					case Prototypes::FURNACE:		return makeFurnace((rapidjson::Value&)thing);
+						//TODO fill out this as above
+					}
+					//if you got here, then the prototype is not recognized
+					assert(false);
+					return NULL;
+				}
+			}
+		}
+	}
+	assert(false);
+	return NULL;
+}
+
+struct FactorioCalculations::Resource* JSONInterface::makeResource(rapidjson::Value& val)
+{
+	FactorioCalculations::Resource* r = new FactorioCalculations::Resource;
+	r->prototype = FactorioCalculations::Prototypes::RESOURCE;
+	r->name = val["name"].GetString();
+	r->miningHardness = val["miningHardness"].GetDouble();
+	r->miningTime = val["miningTime"].GetDouble();
+
+	return r;
+}
+
+struct FactorioCalculations::Miner* JSONInterface::makeMiner(rapidjson::Value& val)
+{
+	FactorioCalculations::Miner* m = new FactorioCalculations::Miner;
+
+	m->prototype = FactorioCalculations::Prototypes::MINING_DRILL;
+	m->name = val["name"].GetString();
+	m->energyConsumption = val["energyConsumption"].GetInt64();
+	m->craftTime = val["craftTime"].GetFloat();
+	m->miningPower = val["miningPower"].GetFloat();
+	m->miningSpeed = val["miningSpeed"].GetFloat();
+
+	return m;
+}
+
+struct FactorioCalculations::Item* JSONInterface::makeItem(rapidjson::Value& val)
+{
+	FactorioCalculations::Item* i = new FactorioCalculations::Item;
+
+	i->prototype = FactorioCalculations::Prototypes::ITEM;
+	i->name = val["name"].GetString();
+	
+	for (rapidjson::Value& v : val["ingredients"].GetArray())
+	{
+		FactorioCalculations::Ingredient* e = new FactorioCalculations::Ingredient;
+		e->name = v["name"].GetString();
+		e->prototype = v["prototype"].GetString();
+		e->count = v["count"].GetInt();
+		i->ingredients.push_back(e);
+	}
+	i->craftTime = val["craftTime"].GetDouble();
+	if (val.HasMember("craftMethod"))
+		i->craftMethod = FactorioCalculations::getCraftMethod(val["craftMethod"].GetString());
+	else
+		i->craftMethod = FactorioCalculations::CraftMethods::cCRAFT;
+
+	return i;
+}
+
+struct FactorioCalculations::Furnace* JSONInterface::makeFurnace(rapidjson::Value& val)
+{
+	FactorioCalculations::Furnace* f = new FactorioCalculations::Furnace;
+
+	f->prototype = FactorioCalculations::Prototypes::FURNACE;
+	f->name = val["name"].GetString();
+
+	for (rapidjson::Value& v : val["ingredients"].GetArray())
+	{
+		FactorioCalculations::Ingredient* e = new FactorioCalculations::Ingredient;
+		e->name = v["name"].GetString();
+		e->prototype = v["prototype"].GetString();
+		e->count = v["count"].GetInt();
+		f->ingredients.push_back(e);
+	}
+
+	f->craftTime = val["craftTime"].GetDouble();
+	f->craftSpeed = val["craftSpeed"].GetDouble();
+	f->pollution = val["pollution"].GetDouble();
+	f->moduleSlots = val["moduleSlots"].GetInt();
+	if (val.HasMember("craftMethod"))
+		f->craftMethod = FactorioCalculations::getCraftMethod(val["craftMethod"].GetString());
+	else
+		f->craftMethod = FactorioCalculations::CraftMethods::cCRAFT;
+
+	return f;
+}
+
+
+bool JSONInterface::hasValue(const char* s) const
+{
+	using namespace rapidjson;
+
+	const Value& root = (*doc)["prototypes"];
+
+	for (auto& protos : root.GetArray())
+	{
+		for (auto& thing : protos["items"].GetArray())
+		{
+			if (strcmp(thing["name"].GetString(), s))
+				return true;
+		}
+	}
+	return false;
+	
+}

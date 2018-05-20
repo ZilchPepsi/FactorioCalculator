@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="FactorioCalculator.cpp" />
     <ClCompile Include="JSONInterface.cpp" />
     <ClCompile Include="TestMain.cpp" />
   </ItemGroup>
@@ -27,6 +28,8 @@
     <None Include="testFile.json" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Calculator.h" />
+    <ClInclude Include="FactorioCalculator.h" />
     <ClInclude Include="JSONInterface.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -56,7 +59,7 @@
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>

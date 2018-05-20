@@ -1,17 +1,25 @@
-#include "JSONInterface.h"
 #include <iostream>
 
-#define WINPAUSE system("pause")
+#include "FactorioCalculator.h"
 
 int main()
 {
-	JSONInterface items("testFile.json");
+	FactorioCalculator calc("Items.json");
 
-	/*
-	const rapidjson::value& a = (*items.doc)["prototypes"];
+	std::vector<struct FactorioCalculator::FactorySetup*> factory;
 
-	for (rapidjson::sizetype i = 0; i < a.size(); i++)
-		std::cout << a["prototype"].GetString() << std::endl;*/
+	calc.calculateFactorySetup("Iron Plate", 5, factory);
+
+	//TODO each element in these factories needs to be deleted
+	for (FactorioCalculator::FactorySetup* fs : factory)
+	{
+		calc.printString(*fs);
+		std::cout<< std::endl;
+		for (int x = 0; x < 30; x++)
+			std::cout << "-";
+		std::cout << std::endl << std::endl;;
+		delete fs;
+	}
 
 	return 0;
 }

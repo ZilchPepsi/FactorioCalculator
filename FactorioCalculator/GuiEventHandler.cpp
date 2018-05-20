@@ -8,9 +8,7 @@ GuiEventHandler::~GuiEventHandler(){}
 
 std::string GuiEventHandler::init() 
 {
-	/*
-	TODO
-	*/
+	//calc.calculateFactorySetup("Iron Plate", 5, factory);
 	return "handler init";
 }
 
@@ -19,6 +17,7 @@ std::string GuiEventHandler::destroy()
 	/*
 	TODO
 	*/
+	//for(int i = 0; i<factory.size(); )
 	return "handler destroy";
 }
 
