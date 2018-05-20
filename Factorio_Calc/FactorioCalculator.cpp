@@ -1,6 +1,7 @@
 #include "FactorioCalculator.h"
 #include <iostream>
 #include <cmath>
+#include "stdafx.h"
 
 FactorioCalculator::FactorioCalculator(const char* fileName) : jsonInterface(fileName)
 {

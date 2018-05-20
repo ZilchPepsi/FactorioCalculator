@@ -1,9 +1,9 @@
 #include "JSONInterface.h"
+#include "stdafx.h"
 #include <fstream>
 #include <string>
 #include <iostream>
 #include <cctype>
-
 
 using namespace json;
 
