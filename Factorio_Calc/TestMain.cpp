@@ -2,7 +2,7 @@
 
 #include "FactorioCalculator.h"
 
-/*
+
 int main()
 {
 	FactorioCalculator calc("Items.json");
@@ -24,4 +24,3 @@ int main()
 
 	return 0;
 }
-*/

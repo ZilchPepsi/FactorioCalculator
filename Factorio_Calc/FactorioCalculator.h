@@ -1,19 +1,13 @@
 #ifndef FACTCALC
 #define FACTCALC
 
-#ifdef FACTORIOCALC_EXPORTS
-#define CALCULATORINTERNALS_API __declspec(dllexport)
-#else
-#define CALCULATORINTERNALS_API __declspec(dllimport)
-#endif
-
 #include "JSONInterface.h"
 #include <vector>
 
 /*
 	this is the main file that will be called upon for use by user
 */
-class CALCULATORINTERNALS_API FactorioCalculator
+class FactorioCalculator
 {
 	json::JSONInterface jsonInterface;
 
