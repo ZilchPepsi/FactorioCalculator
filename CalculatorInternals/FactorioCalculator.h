@@ -18,7 +18,7 @@ public:
 	*/
 	struct FactorySetup {
 
-		struct FactorioCalculations::Element* element;
+		const FactorioCalculations::Element* element;
 
 		double asm1, asm2, asm3;
 		double stoneFurnace, steelFurnace, electricFurnace;
@@ -26,23 +26,28 @@ public:
 		double pumpjacks;
 		double chemicalPlants;
 		double refineries;
+
+		~FactorySetup()
+		{
+			delete element;
+		}
 	};
 
-private:
-	struct FactorySetup* contains(std::vector<struct FactorySetup>&, struct FactorioCalculations::Element&);
-
-
-
-public:
 	FactorioCalculator(const char*);
 	~FactorioCalculator();
 
 	/*
-		will calculate the build requirements for producing an element at a certain rate
-		@param char* the item to make
-		@param double the rate at which to make the item
+	will calculate the build requirements for producing an element at a certain rate
+	@param char* the item to make
+	@param double the rate at which to make the item
+	@param vector<FactorySetup*>& the array that will contain the factory afterwards
 	*/
-	 void calculateFactorySetup (const char*, double, std::vector<struct FactorySetup>&);
+	void calculateFactorySetup(const char*, double, std::vector<FactorySetup*>&);
+	void printString(FactorySetup&);
 
+private:
+	struct FactorySetup* contains(std::vector<FactorySetup*>&, const FactorioCalculations::Element*);
+	void calculateResource(const FactorioCalculations::Element*, double rate, std::vector<FactorySetup*>&);
+	void calculateItem(const FactorioCalculations::Element*, double rate, std::vector<FactorySetup*>&);
 };
 #endif

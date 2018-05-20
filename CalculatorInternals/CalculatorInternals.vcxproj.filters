@@ -29,9 +29,6 @@
     <None Include="Items.json">
       <Filter>Source Files</Filter>
     </None>
-    <None Include="testFile.json">
-      <Filter>Source Files</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="JSONInterface.h">

@@ -25,7 +25,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Items.json" />
-    <None Include="testFile.json" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Calculator.h" />

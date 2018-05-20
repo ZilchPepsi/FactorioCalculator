@@ -3,6 +3,7 @@
 
 #include <map>
 #include <iostream>
+#include <vector>
 
 /*
 	This namespace contains utility functions for Factorio calculations
@@ -13,7 +14,8 @@ namespace FactorioCalculations {
 	/////////////////////////////////////////////////////////
 	////prototypes
 	/////////////////////////////////////////////////////////
-	const int ProtoTypeCount = 6;
+	const int PrototypeCount = 7;
+	const int CraftMethodCount = 6;
 
 	enum Prototypes {
 		RESOURCE,
@@ -21,6 +23,7 @@ namespace FactorioCalculations {
 		ASSEMBLINGMACHINE,
 		ITEM,
 		MINING_DRILL,
+		FURNACE,
 		PROCESS
 	};
 
@@ -30,8 +33,58 @@ namespace FactorioCalculations {
 		"ASSEMBLINGMACHINE",
 		"ITEM",
 		"MINING_DRILL",
+		"FURNACE",
 		"PROCESS"
 	};
+
+	enum CraftMethods {
+		cCRAFT,
+		cFURNACE,
+		cPROCESS,
+		cGROUND,
+		cOFFSHOREPUMP,
+		cBOILER
+	};
+
+	static const char* CraftMethods_strings[] = {
+		"cCRAFT",
+		"cFURNACE",
+		"cPROCESS",
+		"cGROUND",
+		"cOFFSHOREPUMP",
+		"cBOILER"
+	};
+
+	/*	
+		returns the enum equivalent of a const string
+		@param const char* the string to check
+	*/
+	static CraftMethods getCraftMethod(const char * s)
+	{
+		for (int x = 0; x< CraftMethodCount; x++)
+		{
+			if (!strcmp(s, CraftMethods_strings[x]))
+			{
+				return (CraftMethods)x;
+			}
+		}
+		//if you reach this then the craftMethod doesn't exist
+		assert(false);
+		return CraftMethods::cCRAFT;
+	}
+	static Prototypes getPrototype(const char * p)
+	{
+		for (int x = 0; x < PrototypeCount; x++)
+		{
+			if (!strcmp(p, Prototype_strings[x]))
+			{
+				return (Prototypes)x;
+			}
+		}
+		//if you reach this then the prototype doesn't exist
+		assert(false);
+		return Prototypes::ITEM;
+	}
 
 	/////////////////////////////////////////////////////////
 	////END prototypes
@@ -44,11 +97,31 @@ namespace FactorioCalculations {
 		std::map<const char*, const char*> extras;
 	};
 
+	struct Ingredient {
+		const char* name;
+		const char* prototype;
+		int count;
+	};
+
 
 	struct Resource : Element {
 		
 		double miningHardness;
 		double miningTime;
+	};
+	struct Item : Element {
+
+		CraftMethods craftMethod;
+		double craftTime;
+		std::vector<Ingredient*> ingredients;
+
+		~Item()
+		{
+			for (Ingredient* i : ingredients)
+			{
+				delete i;
+			}
+		}
 	};
 	
 	struct Fluid : Element {
@@ -62,7 +135,12 @@ namespace FactorioCalculations {
 		float miningSpeed;
 
 	};
+	struct Furnace : Item {
 
+		int moduleSlots;
+		double craftSpeed;
+		double pollution;
+	};
 
 	/*
 		returns the  rate (resources/sec) at which a resource is mined using a miner
@@ -76,6 +154,11 @@ namespace FactorioCalculations {
 	{
 		return craftingTime / craftingSpeed;
 	}
+	static double getBuildSpeed(Furnace* f, Item* i)
+	{
+		return i->craftTime / f->craftSpeed;
+	}
 }
+
 
 #endif

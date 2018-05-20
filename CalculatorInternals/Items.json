@@ -8,33 +8,39 @@
           "miningHardness": 0.9,
           "miningTime": 2,
           "fuelValue": 8000000,
-          "vehicleAcceleration": 1
+          "vehicleAcceleration": 1,
+          "tab": "intermediate products"
         },
         {
           "name": "Stone",
           "miningHardness": 0.4,
-          "miningTime": 2
+          "miningTime": 2,
+          "tab": "intermediate products"
         },
         {
           "name": "Iron Ore",
           "miningHardness": 0.9,
-          "miningTime": 2
+          "miningTime": 2,
+          "tab": "intermediate products"
         },
         {
           "name": "Copper Ore",
           "miningHardness": 0.9,
-          "miningTime": 2
+          "miningTime": 2,
+          "tab": "intermediate products"
         },
         {
           "name": "Uranium Ore",
           "miningHardness": 0.9,
-          "miningTime": 4
+          "miningTime": 4,
+          "tab": "intermediate products"
         },
         {
           "name": "Raw Wood",
           "miningHardness": 0.5,
           "miningTime": 2,
-          "fuelValue": 4000000
+          "fuelValue": 4000000,
+          "tab": "intermediate products"
         }
       ]
     },
@@ -50,7 +56,8 @@
               "name": "Pumpjack"
             }
           ],
-          "craftMethod":"miner"
+          "craftMethod": "cGROUND",
+          "tab": "intermediate products"
         },
         {
           "name": "Heavy Oil",
@@ -65,7 +72,8 @@
               "name": "Chemical Plant"
             }
           ],
-          "craftMethod":"PROCESS"
+          "craftMethod": "cPROCESS",
+          "tab": "intermediate products"
         },
         {
           "name": "Light Oil",
@@ -80,7 +88,8 @@
               "name": "Chemical Plant"
             }
           ],
-          "craftMethod":"PROCESS"
+          "craftMethod": "cPROCESS",
+          "tab": "intermediate products"
         },
         {
           "name": "Lubricant",
@@ -100,7 +109,8 @@
           ],
           "craftTime": 1,
           "outputCount": 10,
-          "craftMethod":"PROCESS"
+          "craftMethod": "cPROCESS",
+          "tab": "intermediate products"
         },
         {
           "name": "Water",
@@ -110,7 +120,8 @@
               "name": "Offshore Pump"
             }
           ],
-          "craftMethod":"offshorePump"
+          "craftMethod": "cOFFSHOREPUMP",
+          "tab": "intermediate products"
         },
         {
           "name": "Petroleum Gas",
@@ -125,7 +136,8 @@
               "name": "Chemical Plant"
             }
           ],
-          "craftMethod":"PROCESS"
+          "craftMethod": "cPROCESS",
+          "tab": "intermediate products"
         },
         {
           "name": "Sulfuric Acid",
@@ -136,25 +148,8 @@
               "name": "Chemical Plant"
             }
           ],
-          "ingredients": [
-            {
-              "prototype": "ITEM",
-              "name": "Iron Plate",
-              "count": 1
-            },
-            {
-              "prototype": "ITEM",
-              "name": "Sulfur",
-              "count": 5
-            },
-            {
-              "prototype": "liquid",
-              "name": "Water",
-              "count": 100
-            }
-          ],
-          "craftTime": 1,
-          "outputCount": 50
+          "craftMethod": "cPROCESS",
+          "tab": "intermediate products"
         },
         {
           "name": "Steam",
@@ -167,7 +162,9 @@
               "prototype": "boiler",
               "name": "Heat Exchanger"
             }
-          ]
+          ],
+          "craftMethod": "cBOILER",
+          "tab": "intermediate products"
         }
       ]
     },
@@ -200,7 +197,8 @@
           "craftTime": 0.5,
           "craftSpeed": 0.5,
           "pollution": 3,
-          "moduleSlots": 0
+          "moduleSlots": 0,
+          "tab": "production"
         },
         {
           "name": "Assembling Machine 2",
@@ -233,7 +231,8 @@
           "craftTime": 0.5,
           "craftSpeed": 0.75,
           "pollution": 2.4,
-          "moduleSlots": 2
+          "moduleSlots": 2,
+          "tab": "production"
         },
         {
           "name": "Assembling Machine 3",
@@ -256,7 +255,8 @@
           "craftTime": 0.5,
           "craftSpeed": 1.25,
           "pollution": 1.8,
-          "moduleSlots": 4
+          "moduleSlots": 4,
+          "tab": "production"
         },
         {
           "name": "Oil Refinery",
@@ -295,7 +295,8 @@
           "craftSpeed": 1,
           "pollution": 3.6,
           "moduleSlots": 3,
-          "requiredTech": "Oil Processing"
+          "requiredTech": "Oil Processing",
+          "tab": "production"
         }
       ]
     },
@@ -312,7 +313,8 @@
             }
           ],
           "craftTime": 0.5,
-          "outputCount": 1
+          "outputCount": 1,
+          "tab": "intermediate products"
         },
         {
           "name": "Iron Plate",
@@ -324,7 +326,8 @@
             }
           ],
           "craftTime": 3.5,
-          "craftMethod": "furnace"
+          "craftMethod": "cFURNACE",
+          "tab": "intermediate products"
         },
         {
           "name": "Copper Plate",
@@ -336,7 +339,8 @@
             }
           ],
           "craftTime": 3.5,
-          "craftMethod": "furnace"
+          "craftMethod": "cFURNACE",
+          "tab": "intermediate products"
         },
         {
           "name": "Iron Gear Wheel",
@@ -347,7 +351,8 @@
               "count": 2
             }
           ],
-          "craftTime": 3.5
+          "craftTime": 3.5,
+          "tab": "intermediate products"
         }
       ]
     },
@@ -380,7 +385,8 @@
           "dimensionY": 3,
           "energyConsumption": 90000,
           "miningAreaX": 5,
-          "miningAreaY": 5
+          "miningAreaY": 5,
+          "tab": "production"
         }
       ]
 
@@ -537,6 +543,75 @@
             }
           ],
           "craftTime": 5
+        }
+      ]
+    },
+    {
+      "prototype": "FURNACE",
+      "items": [
+        {
+          "name": "Stone Furnace",
+          "ingredients": [
+            {
+              "prototype": "RESOURCE",
+              "name": "Stone",
+              "count": 5
+            }
+          ],
+          "craftTime": 0.5,
+          "craftSpeed": 1,
+          "pollution": 1.8,
+          "moduleSlots": 0,
+          "tab": "production"
+        },
+        {
+          "name": "Steel Furnace",
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Steel Plate",
+              "count": 6
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Stone Brick",
+              "count": 10
+            }
+          ],
+          "craftTime": 3,
+          "craftSpeed": 2,
+          "pollution": 3.6,
+          "moduleSlots": 0,
+          "tab": "production",
+          "RequiredTech": "Advanced Material Processing"
+        },
+        {
+          "name": "Electric Furnace",
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Advanced Circuit",
+              "count": 5
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Stone Brick",
+              "count": 10
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Steel Plate",
+              "count": 10
+            }
+          ],
+          "craftTime": 5,
+          "craftSpeed": 2,
+          "pollution": 0.9,
+          "moduleSlots": 2,
+          "energyConsumption": 180000,
+          "energyDrain": 6000,
+          "tab": "production",
+          "RequiredTech": "Advanced Material Processing 2"
         }
       ]
     }

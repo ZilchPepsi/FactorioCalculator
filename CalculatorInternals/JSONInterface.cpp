@@ -54,20 +54,15 @@ const struct FactorioCalculations::Element* JSONInterface::getValue(const char* 
 		{
 			if (!strcmp(thing["name"].GetString(), s))
 			{
-				const char* proto = protos["prototype"].GetString();
-
-				for (int x = 0; x < FactorioCalculations::ProtoTypeCount; x++)
+				switch (FactorioCalculations::getPrototype(protos["prototype"].GetString()))
 				{
-					if (!strcmp(proto, FactorioCalculations::Prototype_strings[x]))
-					{
-						switch (x)
-						{
-						case 0: return makeResource((rapidjson::Value&)thing);
-						case 4: return makeMiner((rapidjson::Value&)thing);
-						}
-					}
+					using namespace FactorioCalculations;
+				case Prototypes::RESOURCE:		return makeResource((rapidjson::Value&)thing);
+				case Prototypes::ITEM:			return makeItem((rapidjson::Value&)thing);
+				case Prototypes::MINING_DRILL:	return makeMiner((rapidjson::Value&)thing);
+				case Prototypes::FURNACE:		return makeFurnace((rapidjson::Value&)thing);
 				}
-				//if you got here, then the prototype is not recognized
+				//if you got here, then the prototype is not recognized or the switch doesn't have that prototype yet
 				assert(false);
 				return NULL;
 			}
@@ -91,17 +86,15 @@ const struct FactorioCalculations::Element* JSONInterface::getValueWithHint(cons
 			{
 				if (!strcmp(thing["name"].GetString(), s))
 				{
-					for (int x = 0; x < FactorioCalculations::ProtoTypeCount; x++)
+
+					switch (FactorioCalculations::getPrototype(proto))
 					{
-						if (!strcmp(proto, FactorioCalculations::Prototype_strings[x]))
-						{
-							switch (x)
-							{
-							case 0: return makeResource((rapidjson::Value&)thing);
-							case 4: return makeMiner((rapidjson::Value&)thing);
-							//TODO fill out this switch like the function above
-							}
-						}
+						using namespace FactorioCalculations;
+					case Prototypes::RESOURCE:		return makeResource((rapidjson::Value&)thing);
+					case Prototypes::ITEM:			return makeItem((rapidjson::Value&)thing);
+					case Prototypes::MINING_DRILL:	return makeMiner((rapidjson::Value&)thing);
+					case Prototypes::FURNACE:		return makeFurnace((rapidjson::Value&)thing);
+						//TODO fill out this as above
 					}
 					//if you got here, then the prototype is not recognized
 					assert(false);
@@ -137,6 +130,58 @@ struct FactorioCalculations::Miner* JSONInterface::makeMiner(rapidjson::Value& v
 	m->miningSpeed = val["miningSpeed"].GetFloat();
 
 	return m;
+}
+
+struct FactorioCalculations::Item* JSONInterface::makeItem(rapidjson::Value& val)
+{
+	FactorioCalculations::Item* i = new FactorioCalculations::Item;
+
+	i->prototype = FactorioCalculations::Prototypes::ITEM;
+	i->name = val["name"].GetString();
+	
+	for (rapidjson::Value& v : val["ingredients"].GetArray())
+	{
+		FactorioCalculations::Ingredient* e = new FactorioCalculations::Ingredient;
+		e->name = v["name"].GetString();
+		e->prototype = v["prototype"].GetString();
+		e->count = v["count"].GetInt();
+		i->ingredients.push_back(e);
+	}
+	i->craftTime = val["craftTime"].GetDouble();
+	if (val.HasMember("craftMethod"))
+		i->craftMethod = FactorioCalculations::getCraftMethod(val["craftMethod"].GetString());
+	else
+		i->craftMethod = FactorioCalculations::CraftMethods::cCRAFT;
+
+	return i;
+}
+
+struct FactorioCalculations::Furnace* JSONInterface::makeFurnace(rapidjson::Value& val)
+{
+	FactorioCalculations::Furnace* f = new FactorioCalculations::Furnace;
+
+	f->prototype = FactorioCalculations::Prototypes::FURNACE;
+	f->name = val["name"].GetString();
+
+	for (rapidjson::Value& v : val["ingredients"].GetArray())
+	{
+		FactorioCalculations::Ingredient* e = new FactorioCalculations::Ingredient;
+		e->name = v["name"].GetString();
+		e->prototype = v["prototype"].GetString();
+		e->count = v["count"].GetInt();
+		f->ingredients.push_back(e);
+	}
+
+	f->craftTime = val["craftTime"].GetDouble();
+	f->craftSpeed = val["craftSpeed"].GetDouble();
+	f->pollution = val["pollution"].GetDouble();
+	f->moduleSlots = val["moduleSlots"].GetInt();
+	if (val.HasMember("craftMethod"))
+		f->craftMethod = FactorioCalculations::getCraftMethod(val["craftMethod"].GetString());
+	else
+		f->craftMethod = FactorioCalculations::CraftMethods::cCRAFT;
+
+	return f;
 }
 
 

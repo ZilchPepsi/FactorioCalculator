@@ -18,9 +18,10 @@ namespace json {
 
 		struct FactorioCalculations::Resource* makeResource(rapidjson::Value&);
 		struct FactorioCalculations::Miner* makeMiner(rapidjson::Value&);
+		struct FactorioCalculations::Item* makeItem(rapidjson::Value&);
+		struct FactorioCalculations::Furnace* makeFurnace(rapidjson::Value&);
 		/*struct FactorioCalculations::Resource makeFluid(rapidjson::Value&);
 		struct FactorioCalculations::Resource makeAssemblingMachine(rapidjson::Value&);
-		struct FactorioCalculations::Resource makeItem(rapidjson::Value&);
 		struct FactorioCalculations::Resource makeProcess(rapidjson::Value&);*/
 
 	public:
