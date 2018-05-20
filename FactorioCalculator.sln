@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FactorioCalculator", "Facto
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Factorio_Calc", "Factorio_Calc\Factorio_Calc.vcxproj", "{EE6D6804-C5F7-4290-A28A-FA39C86D7224}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CalculatorTester", "CalculatorTester\CalculatorTester.vcxproj", "{3C8D7956-9DEB-489D-B8CC-DDF4E8A69BC8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{EE6D6804-C5F7-4290-A28A-FA39C86D7224}.Release|x64.Build.0 = Release|x64
 		{EE6D6804-C5F7-4290-A28A-FA39C86D7224}.Release|x86.ActiveCfg = Release|Win32
 		{EE6D6804-C5F7-4290-A28A-FA39C86D7224}.Release|x86.Build.0 = Release|Win32
+		{3C8D7956-9DEB-489D-B8CC-DDF4E8A69BC8}.Debug|x64.ActiveCfg = Debug|x64
+		{3C8D7956-9DEB-489D-B8CC-DDF4E8A69BC8}.Debug|x64.Build.0 = Debug|x64
+		{3C8D7956-9DEB-489D-B8CC-DDF4E8A69BC8}.Debug|x86.ActiveCfg = Debug|Win32
+		{3C8D7956-9DEB-489D-B8CC-DDF4E8A69BC8}.Debug|x86.Build.0 = Debug|Win32
+		{3C8D7956-9DEB-489D-B8CC-DDF4E8A69BC8}.Release|x64.ActiveCfg = Release|x64
+		{3C8D7956-9DEB-489D-B8CC-DDF4E8A69BC8}.Release|x64.Build.0 = Release|x64
+		{3C8D7956-9DEB-489D-B8CC-DDF4E8A69BC8}.Release|x86.ActiveCfg = Release|Win32
+		{3C8D7956-9DEB-489D-B8CC-DDF4E8A69BC8}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
