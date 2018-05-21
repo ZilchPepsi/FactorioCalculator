@@ -97,8 +97,6 @@ std::wstring FactorioCalculator::printToString(FactorioCalculator::FactorySetup&
 const std::map<const char*, FactorioCalculations::Tabs>* FactorioCalculator::getTabs()
 {
 	return jsonInterface.getTabs();
-
-
 }
 
 
