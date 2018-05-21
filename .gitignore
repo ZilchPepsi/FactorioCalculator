@@ -5,6 +5,4 @@ Debug/
 Release/
 x64/
 FactorioCalculator/*.aps
-*.obj
-*.pch
-*.tlog
+FactorioCalculator/x64/
