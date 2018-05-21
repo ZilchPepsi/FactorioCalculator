@@ -6,6 +6,9 @@
 /*
 	this is the main file that will be called upon for use by user
 */
+
+//const std::wstring WIN_RTN = L"\r\n";
+
 class FactorioCalculator
 {
 	json::JSONInterface jsonInterface;
@@ -39,7 +42,7 @@ public:
 		}
 	};
 
-	FactorioCalculator(const char*);
+	FactorioCalculator();
 	~FactorioCalculator();
 
 	/*
@@ -51,6 +54,7 @@ public:
 	void calculateFactorySetup(const char*, double, std::vector<FactorySetup*>&);
 	const std::map<const char*, const char*>* getTabs();
 	void printString(FactorySetup&);
+	std::wstring printToString(FactorySetup& fs);
 	void init(const char *);
 
 private:

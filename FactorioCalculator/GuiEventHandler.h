@@ -2,8 +2,6 @@
 
 #include "stdafx.h"
 
-//#define FILENAME_ITEM "Items.json"
-
 using namespace std;
 
 class GuiEventHandler
@@ -15,23 +13,25 @@ class GuiEventHandler
 
 
 		// User Input Events
-		std::string init();
-		std::string destroy();
+		std::wstring init();
+		std::wstring destroy();
 
-		std::string btn_click_calculate();
-		std::string btn_click_reset();
+		std::wstring btn_click_calculate();
+		std::wstring btn_click_reset();
 		
-		std::string rbtn_click_log();
-		std::string rbtn_click_prd();
-		std::string rbtn_click_int();
-		std::string rbtn_click_cbt();
+		std::wstring rbtn_click_log();
+		std::wstring rbtn_click_prd();
+		std::wstring rbtn_click_int();
+		std::wstring rbtn_click_cbt();
 
-		std::string cbn_ichange_output(int i);
-		std::string cbn_ichange_per(int i);
+		std::wstring cbn_ichange_output(int i);
+		std::wstring cbn_ichange_per(int i);
 		
 		// GUI dynamic populaiton
 		vector<std::wstring> * get_per_items();
 		vector<std::wstring> * get_output_items();
+
+		std::wstring parseCalcToString();
 
 	private:
 
@@ -39,6 +39,6 @@ class GuiEventHandler
 		vector<std::wstring> output_items = { L"init item 0", L"init item 1" };
 
 		std::vector<struct FactorioCalculator::FactorySetup*> factory;
-		//FactorioCalculator calc("Items.json");
+		FactorioCalculator calc;
 };
 

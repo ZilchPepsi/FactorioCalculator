@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cmath>
 
-FactorioCalculator::FactorioCalculator(const char* fileName)
+FactorioCalculator::FactorioCalculator()
 {}
 
 void FactorioCalculator::init(const char* fileName)
@@ -62,6 +62,31 @@ void FactorioCalculator::printString( FactorioCalculator::FactorySetup& fs)
 	std::cout << "pumpjacks: " << fs.pumpjacks << std::endl;
 	std::cout << "chemical plants: " << fs.chemicalPlants << std::endl;
 	std::cout << "refineries: " << fs.refineries << std::endl;
+}
+
+/*
+utility function for printing out FactorySetup struct to string
+*/
+std::wstring FactorioCalculator::printToString(FactorioCalculator::FactorySetup& fs)
+{
+	std::wstring retval = L"";
+	retval += (wchar_t)(fs.element->name) + WIN_RTN;// + WIN_RTN;
+	retval += WIN_RTN;
+
+	retval += L"asm1: " + std::to_wstring(fs.asm1) + WIN_RTN;
+	retval += L"asm2: " + std::to_wstring(fs.asm2) + WIN_RTN;
+	retval += L"asm3: " + std::to_wstring(fs.asm3) + WIN_RTN + WIN_RTN;
+
+	retval += L"stoneFurnace: " + std::to_wstring(fs.stoneFurnace) + WIN_RTN;
+	retval += L"steelFurnace: " + std::to_wstring(fs.steelFurnace) + WIN_RTN;
+	retval += L"electricFurnace: " + std::to_wstring(fs.electricFurnace) + WIN_RTN + WIN_RTN;
+
+	retval += L"miners: " + std::to_wstring(fs.miners) + WIN_RTN;
+	retval += L"pumpjacks: " + std::to_wstring(fs.pumpjacks) + WIN_RTN;
+	retval += L"chemical plants: " + std::to_wstring(fs.chemicalPlants) + WIN_RTN;
+	retval += L"refineries: " + std::to_wstring(fs.refineries) + WIN_RTN;
+
+	return retval;
 }
 
 const std::map<const char*, const char*>* FactorioCalculator::getTabs()

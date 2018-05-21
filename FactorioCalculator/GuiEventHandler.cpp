@@ -6,12 +6,12 @@ using namespace std;
 GuiEventHandler::GuiEventHandler(){}
 GuiEventHandler::~GuiEventHandler(){}
 
-std::string GuiEventHandler::init() 
+std::wstring GuiEventHandler::init() 
 {
-	return "handler init";
+	return L"handler init";
 }
 
-std::string GuiEventHandler::destroy()
+std::wstring GuiEventHandler::destroy()
 {
 	/*
 	TODO
@@ -20,72 +20,72 @@ std::string GuiEventHandler::destroy()
 	{
 		delete factory[i];
 	}
-	return "handler destroy";
+	return L"handler destroy";
 }
 
-std::string GuiEventHandler::btn_click_calculate()
+std::wstring GuiEventHandler::btn_click_calculate()
 {
 	/* 
 		TODO
 	*/
-	FactorioCalculator calc("Items.json");
+	calc.init("Items.json");
 	calc.calculateFactorySetup("Iron Plate", 5, factory);
-	return "btn_click_calculate";
+	return parseCalcToString();
 }
-std::string GuiEventHandler::btn_click_reset()
+std::wstring GuiEventHandler::btn_click_reset()
 {
 	/*
 	TODO
 	*/
-	return "btn_click_reset";
-}
-
-std::string GuiEventHandler::rbtn_click_log()
-{
-	/*
-	TODO
-	*/
-	return "rbtn_click_log";
+	return L"btn_click_reset";
 }
 
-std::string GuiEventHandler::rbtn_click_prd()
+std::wstring GuiEventHandler::rbtn_click_log()
 {
 	/*
 	TODO
 	*/
-	return "rbtn_click_prd";
+	return L"rbtn_click_log";
 }
 
-std::string GuiEventHandler::rbtn_click_int()
+std::wstring GuiEventHandler::rbtn_click_prd()
 {
 	/*
 	TODO
 	*/
-	return "rbtn_click_int";
+	return L"rbtn_click_prd";
 }
 
-std::string GuiEventHandler::rbtn_click_cbt()
+std::wstring GuiEventHandler::rbtn_click_int()
 {
 	/*
 	TODO
 	*/
-	return "rbtn_click_cbt";
+	return L"rbtn_click_int";
 }
 
-std::string GuiEventHandler::cbn_ichange_output(int i)
+std::wstring GuiEventHandler::rbtn_click_cbt()
 {
 	/*
 	TODO
 	*/
-	return "cbn_ichange_ouput" + std::to_string(i);
+	return L"rbtn_click_cbt";
 }
 
-std::string GuiEventHandler::cbn_ichange_per(int i)
+std::wstring GuiEventHandler::cbn_ichange_output(int i)
 {
 	/*
 	TODO
 	*/
-	return "cbn_ichange_per" + std::to_string(i);
+	return L"cbn_ichange_ouput" + std::to_wstring(i);
+}
+
+std::wstring GuiEventHandler::cbn_ichange_per(int i)
+{
+	/*
+	TODO
+	*/
+	return L"cbn_ichange_per" + std::to_wstring(i);
 }
 
 vector<std::wstring> * GuiEventHandler::get_per_items()
@@ -98,11 +98,22 @@ vector<std::wstring> * GuiEventHandler::get_output_items()
 	return &output_items;
 }
 
-std::string GuiEventHandler::parseCalcToString()
+std::wstring GuiEventHandler::parseCalcToString()
 {
-	//std::string retval = falc;
+	std::wstring retval = L"";
 
-	//for()
+	for (FactorioCalculator::FactorySetup * fs : factory)
+	{
+		retval += WIN_RTN;
+		retval += calc.printToString(*fs);
+
+		for (int i = 0; i < 10; i++)
+		{
+			retval += L"-";
+		}
+		retval += WIN_RTN;
+		retval += WIN_RTN;
+	}
 
 	return retval;
 }
