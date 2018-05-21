@@ -3,5 +3,8 @@ node_modules
 FactorioCalculator/Debug/
 Debug/
 Release/
-x64
+x64/
 FactorioCalculator/*.aps
+*.obj
+*.pch
+*.tlog
