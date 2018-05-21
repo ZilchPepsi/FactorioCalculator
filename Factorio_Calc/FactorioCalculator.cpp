@@ -4,15 +4,29 @@
 
 FactorioCalculator::FactorioCalculator(const char* fileName) : jsonInterface(fileName)
 {
+	using namespace FactorioCalculations;
+	stoneFurnace = (Furnace*)jsonInterface.getValueWithHint("Stone Furnace", "FURNACE");
+	steelFurnace = (Furnace*)jsonInterface.getValueWithHint("Steel Furnace", "FURNACE");
+	electricFurnace = (Furnace*)jsonInterface.getValueWithHint("Electric Furnace", "FURNACE");
+
+	asm1 = (Assembler*)jsonInterface.getValueWithHint("Assembling Machine 1", "ASSEMBLINGMACHINE");
+	asm2 = (Assembler*)jsonInterface.getValueWithHint("Assembling Machine 2", "ASSEMBLINGMACHINE");
+	asm3 = (Assembler*)jsonInterface.getValueWithHint("Assembling Machine 3", "ASSEMBLINGMACHINE");
 }
 
 
 FactorioCalculator::~FactorioCalculator()
 {
+	delete stoneFurnace;
+	delete steelFurnace;
+	delete electricFurnace;
+	delete asm1;
+	delete asm2;
+	delete asm3;
 }
 
 /*
-	tests the vector for an instance of the element, returns the element
+	tests the vector for an instance of the element, returns the element, or null if not found
 */
 struct FactorioCalculator::FactorySetup* FactorioCalculator::contains(std::vector<struct FactorySetup*>& factory, const FactorioCalculations::Element* element)
 {
@@ -27,7 +41,7 @@ struct FactorioCalculator::FactorySetup* FactorioCalculator::contains(std::vecto
 /*
 utility function for printing out FactorySetup struct
 */
-void FactorioCalculator::printString(FactorioCalculator::FactorySetup& fs)
+void FactorioCalculator::printString( FactorioCalculator::FactorySetup& fs)
 {
 	std::cout << fs.element->name << std::endl << std::endl;
 
@@ -49,6 +63,8 @@ void FactorioCalculator::printString(FactorioCalculator::FactorySetup& fs)
 
 void FactorioCalculator::calculateFactorySetup(const char* element, double rate, std::vector <struct FactorySetup*>& factorySetup)
 {
+	//std::cout << "starting " << element << std::endl;
+
 	using namespace FactorioCalculations;
 
 
@@ -64,6 +80,9 @@ void FactorioCalculator::calculateFactorySetup(const char* element, double rate,
 	case Prototypes::ITEM:
 		calculateItem(el, rate, factorySetup);
 		break;
+	case Prototypes::ASSEMBLINGMACHINE:
+		calculateAssemblyMachine(el, rate, factorySetup);
+		break;
 	}
 }
 
@@ -72,6 +91,8 @@ void FactorioCalculator::calculateFactorySetup(const char* element, double rate,
 */
 void FactorioCalculator::calculateResource(const FactorioCalculations::Element* el, double rate, std::vector<FactorioCalculator::FactorySetup*>& factorySetup)
 {
+	//std::cout << "in RESOURCE with " << el->name << std::endl;
+
 	using namespace FactorioCalculations;
 
 	Resource* r = (Resource*)el;
@@ -103,45 +124,98 @@ void FactorioCalculator::calculateItem(const FactorioCalculations::Element* el, 
 	using namespace FactorioCalculations;
 	Item* i = (Item*)el;
 
-	Furnace *stoneFurnace, *steelFurnace, *electricFurnace;
-
 	switch (i->craftMethod)
 	{
 	case CraftMethods::cCRAFT:
-		break;
-	case CraftMethods::cFURNACE:
-		stoneFurnace =		(Furnace*)jsonInterface.getValueWithHint("Stone Furnace", "FURNACE");
-		steelFurnace =		(Furnace*)jsonInterface.getValueWithHint("Steel Furnace", "FURNACE");
-		electricFurnace =	(Furnace*)jsonInterface.getValueWithHint("Electric Furnace", "FURNACE");
 
-		double stoneFTime = getBuildSpeed(stoneFurnace, i);
-		double steeFTime = getBuildSpeed(steelFurnace, i);
-		double electricFTime = getBuildSpeed(electricFurnace, i);
+		asm1Time = getBuildSpeed(asm1, i);
+		asm2Time = getBuildSpeed(asm2, i);
+		asm3Time = getBuildSpeed(asm3, i);
 
 		if (FactorySetup* fs = contains(factorySetup, el))
 		{
-			fs->stoneFurnace += rate / stoneFTime;
-			fs->steelFurnace += rate / steeFTime;
-			fs->electricFurnace += rate / electricFTime;
+			fs->asm1 += rate / asm1Time;
+			fs->asm2 += rate / asm2Time;
+			fs->asm3 += rate / asm3Time;
+		}
+		else
+		{
+			fs = new FactorySetup();
+			fs->element = el;
+			fs->asm1 = rate / asm1Time;
+			fs->asm2 = rate / asm2Time;
+			fs->asm3 = rate / asm3Time;
+
+			factorySetup.push_back(fs);
+		}
+		break;
+	case CraftMethods::cFURNACE:
+
+		stoneFurnaceTime = getBuildSpeed(stoneFurnace, i);
+		steelFurnaceTime = getBuildSpeed(steelFurnace, i);
+		electricFurnaceTime = getBuildSpeed(electricFurnace, i);
+
+		if (FactorySetup* fs = contains(factorySetup, el))
+		{
+			fs->stoneFurnace += rate / stoneFurnaceTime;
+			fs->steelFurnace += rate / steelFurnaceTime;
+			fs->electricFurnace += rate / electricFurnaceTime;
 		}
 		else
 		{
 			fs = new FactorySetup();
 
 			fs->element = el;
-			fs->stoneFurnace = rate / stoneFTime;
-			fs->steelFurnace = rate / steeFTime;
-			fs->electricFurnace = rate / electricFTime;
+			fs->stoneFurnace = rate / stoneFurnaceTime;
+			fs->steelFurnace = rate / steelFurnaceTime;
+			fs->electricFurnace = rate / electricFurnaceTime;
 
 			factorySetup.push_back(fs);
 		}
 
 		break;
 	}
-
+	//std::cout << "finished " << i->name << "...working on " << i->ingredients.size() << " ingredients" << std::endl;
 	for (Ingredient* ing : i->ingredients)
 	{
 		calculateFactorySetup(ing->name, rate*ing->count, factorySetup);
 	}
+	//std::cout << "finished " << i->name << " ingredients, now " << factorySetup.size() << " items in factorySetup" << std::endl;
 
+}
+
+void FactorioCalculator::calculateAssemblyMachine(const FactorioCalculations::Element* el, double rate, std::vector<FactorySetup*>& factorySetup)
+{
+	using namespace FactorioCalculations;
+	Assembler* a = (Assembler*)el;
+
+	asm1Time = getBuildSpeed(asm1, a);
+	asm2Time = getBuildSpeed(asm2, a);
+	asm3Time = getBuildSpeed(asm3, a);
+
+	std::cout << "asm1 rate: " << asm1Time << std::endl;
+	std::cout << "asm2 rate: " << asm2Time << std::endl;
+	std::cout << "asm3 rate: " << asm3Time << std::endl;
+
+	if (FactorySetup* fs = contains(factorySetup, el))
+	{
+		fs->asm1 += rate / (1/asm1Time);
+		fs->asm2 += rate / (1/asm2Time);
+		fs->asm3 += rate / (1/asm3Time);
+	}
+	else
+	{
+		fs = new FactorySetup();
+		fs->element = el;
+		fs->asm1 = rate / asm1Time;
+		fs->asm2 = rate / asm2Time;
+		fs->asm3 = rate / asm3Time;
+
+		factorySetup.push_back(fs);
+	}
+
+	for (Ingredient* ing : a->ingredients)
+	{
+		calculateFactorySetup(ing->name, rate*ing->count, factorySetup);
+	}
 }

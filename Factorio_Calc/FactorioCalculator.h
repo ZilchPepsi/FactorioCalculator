@@ -3,13 +3,20 @@
 
 #include "JSONInterface.h"
 #include <vector>
-
 /*
 	this is the main file that will be called upon for use by user
 */
 class FactorioCalculator
 {
 	json::JSONInterface jsonInterface;
+	
+	struct FactorioCalculations::Furnace *stoneFurnace,*steelFurnace, *electricFurnace;
+	struct FactorioCalculations::Assembler *asm1, *asm2, *asm3;
+
+
+	double asm1Time, asm2Time, asm3Time;
+	double stoneFurnaceTime, steelFurnaceTime, electricFurnaceTime;
+
 
 public:
 	/*
@@ -46,7 +53,8 @@ public:
 
 private:
 	struct FactorySetup* contains(std::vector<FactorySetup*>&, const FactorioCalculations::Element*);
-	void calculateResource(const FactorioCalculations::Element*, double rate, std::vector<FactorySetup*>&);
-	void calculateItem(const FactorioCalculations::Element*, double rate, std::vector<FactorySetup*>&);
+	void calculateResource(const FactorioCalculations::Element*, double, std::vector<FactorySetup*>&);
+	void calculateItem(const FactorioCalculations::Element*, double, std::vector<FactorySetup*>&);
+	void calculateAssemblyMachine(const FactorioCalculations::Element*, double, std::vector<FactorySetup*>&);
 };
 #endif

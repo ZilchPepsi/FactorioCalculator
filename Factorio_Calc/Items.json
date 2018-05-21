@@ -353,6 +353,35 @@
           ],
           "craftTime": 3.5,
           "tab": "intermediate products"
+        },
+        {
+          "name": "Electronic Circuit",
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Copper Cable",
+              "count": 3
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Iron Plate",
+              "count": 1
+            }
+          ],
+          "craftTime": 0.5,
+          "tab": "intermediate products"
+        },
+        {
+          "name": "Copper Cable",
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Copper Plate",
+              "count": 1
+            }
+          ],
+          "craftTime": 0.5,
+          "outputCount": 2
         }
       ]
     },

@@ -129,7 +129,7 @@ namespace FactorioCalculations {
 	};
 	struct Miner : Element {
 		
-		long energyConsumption;
+		int64_t energyConsumption;
 		float craftTime;
 		float miningPower;
 		float miningSpeed;
@@ -141,6 +141,14 @@ namespace FactorioCalculations {
 		double craftSpeed;
 		double pollution;
 	};
+	struct Assembler : Item {
+
+		int moduleSlots;
+		double craftSpeed;
+		double pollution;
+		int64_t energyConsumption;
+		int64_t energyDrain;
+	};
 
 	/*
 		returns the  rate (resources/sec) at which a resource is mined using a miner
@@ -150,13 +158,21 @@ namespace FactorioCalculations {
 		return (m->miningPower - r->miningHardness) * (m->miningSpeed / r->miningTime);
 	}
 
+
+	/*
+	returns the rate (res / sec) at which a resource is manufactured using an assembly machine or furnace
+	*/
 	static double getBuildSpeed(double craftingTime, double craftingSpeed)
 	{
-		return craftingTime / craftingSpeed;
+		return 1/(craftingTime / craftingSpeed);
 	}
 	static double getBuildSpeed(Furnace* f, Item* i)
 	{
-		return i->craftTime / f->craftSpeed;
+		return 1/(i->craftTime / f->craftSpeed);
+	}
+	static double getBuildSpeed(Assembler* a, Item* i)
+	{
+		return 1/(i->craftTime / a->craftSpeed);
 	}
 }
 
