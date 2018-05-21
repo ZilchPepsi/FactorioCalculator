@@ -1,20 +1,24 @@
 #include "stdafx.h"
-//#include "FactorioCalculator.h"
 #include <iostream>
 #include <cmath>
 
-FactorioCalculator::FactorioCalculator()//(const char* fileName) : jsonInterface(fileName)
+FactorioCalculator::FactorioCalculator(const char* fileName)
+{}
+
+void FactorioCalculator::init(const char* fileName)
 {
-	/*using namespace FactorioCalculations;
+
+	jsonInterface.init(fileName);
+
+	using namespace FactorioCalculations;
 	stoneFurnace = (Furnace*)jsonInterface.getValueWithHint("Stone Furnace", "FURNACE");
 	steelFurnace = (Furnace*)jsonInterface.getValueWithHint("Steel Furnace", "FURNACE");
 	electricFurnace = (Furnace*)jsonInterface.getValueWithHint("Electric Furnace", "FURNACE");
 
 	asm1 = (Assembler*)jsonInterface.getValueWithHint("Assembling Machine 1", "ASSEMBLINGMACHINE");
 	asm2 = (Assembler*)jsonInterface.getValueWithHint("Assembling Machine 2", "ASSEMBLINGMACHINE");
-	asm3 = (Assembler*)jsonInterface.getValueWithHint("Assembling Machine 3", "ASSEMBLINGMACHINE");*/
+	asm3 = (Assembler*)jsonInterface.getValueWithHint("Assembling Machine 3", "ASSEMBLINGMACHINE");
 }
-
 
 FactorioCalculator::~FactorioCalculator()
 {
@@ -24,19 +28,6 @@ FactorioCalculator::~FactorioCalculator()
 	delete asm1;
 	delete asm2;
 	delete asm3;
-}
-
-void FactorioCalculator::init(const char * filename)// : jsonInterface(filename)
-{
-	jsonInterface(filename);
-	using namespace FactorioCalculations;
-	stoneFurnace = (Furnace*)jsonInterface.getValueWithHint("Stone Furnace", "FURNACE");
-	steelFurnace = (Furnace*)jsonInterface.getValueWithHint("Steel Furnace", "FURNACE");
-	electricFurnace = (Furnace*)jsonInterface.getValueWithHint("Electric Furnace", "FURNACE");
-
-	asm1 = (Assembler*)jsonInterface.getValueWithHint("Assembling Machine 1", "ASSEMBLINGMACHINE");
-	asm2 = (Assembler*)jsonInterface.getValueWithHint("Assembling Machine 2", "ASSEMBLINGMACHINE");
-	asm3 = (Assembler*)jsonInterface.getValueWithHint("Assembling Machine 3", "ASSEMBLINGMACHINE");
 }
 
 /*
@@ -73,30 +64,12 @@ void FactorioCalculator::printString( FactorioCalculator::FactorySetup& fs)
 	std::cout << "refineries: " << fs.refineries << std::endl;
 }
 
-/*
-utility function for printing out FactorySetup struct to string
-*/
-std::string FactorioCalculator::printToString(FactorioCalculator::FactorySetup& fs)
+const std::map<const char*, const char*>* FactorioCalculator::getTabs()
 {
-	std::string retval = "";
-	retval += fs.element->name + WIN_RTN + WIN_RTN;
+	return jsonInterface.getTabs();
 
-	retval += "asm1: " + std::to_string(fs.asm1) + WIN_RTN;
-	retval += "asm2: " + std::to_string(fs.asm2) + WIN_RTN;
-	retval += "asm3: " + std::to_string(fs.asm3) + WIN_RTN + WIN_RTN;
 
-	retval += "stoneFurnace: " + std::to_string(fs.stoneFurnace) + WIN_RTN;
-	retval += "steelFurnace: " + std::to_string(fs.steelFurnace) + WIN_RTN;
-	retval += "electricFurnace: " + std::to_string(fs.electricFurnace) + WIN_RTN + WIN_RTN;
-
-	retval += "miners: " + std::to_string(fs.miners) + WIN_RTN;
-	retval += "pumpjacks: " + std::to_string(fs.pumpjacks) + WIN_RTN;
-	retval += "chemical plants: " + std::to_string(fs.chemicalPlants) + WIN_RTN;
-	retval += "refineries: " + std::to_string(fs.refineries) + WIN_RTN;
-	
-	return retval;
 }
-
 
 
 void FactorioCalculator::calculateFactorySetup(const char* element, double rate, std::vector <struct FactorySetup*>& factorySetup)
@@ -120,6 +93,8 @@ void FactorioCalculator::calculateFactorySetup(const char* element, double rate,
 		break;
 	case Prototypes::ASSEMBLINGMACHINE:
 		calculateAssemblyMachine(el, rate, factorySetup);
+	case Prototypes::TOOL:
+		calculateTool(el, rate, factorySetup);
 		break;
 	}
 }
@@ -237,9 +212,9 @@ void FactorioCalculator::calculateAssemblyMachine(const FactorioCalculations::El
 
 	if (FactorySetup* fs = contains(factorySetup, el))
 	{
-		fs->asm1 += rate / (asm1Time);
-		fs->asm2 += rate / (asm2Time);
-		fs->asm3 += rate / (asm3Time);
+		fs->asm1 += rate / asm1Time;
+		fs->asm2 += rate / asm2Time;
+		fs->asm3 += rate / asm3Time;
 	}
 	else
 	{
@@ -256,4 +231,9 @@ void FactorioCalculator::calculateAssemblyMachine(const FactorioCalculations::El
 	{
 		calculateFactorySetup(ing->name, rate*ing->count, factorySetup);
 	}
+}
+
+void FactorioCalculator::calculateTool(const FactorioCalculations::Element* el, double rate, std::vector<FactorySetup*>& factorySetup)
+{
+	calculateItem(el, rate, factorySetup);
 }

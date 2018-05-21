@@ -643,6 +643,28 @@
           "RequiredTech": "Advanced Material Processing 2"
         }
       ]
+    },
+    {
+      "prototype": "TOOL",
+      "items": [
+        {
+          "name": "Science Pack 1",
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Copper Plate",
+              "count": 1
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Iron Gear Wheel",
+              "count": 1
+            }
+          ],
+          "craftTime": 5,
+          "tab": "intermediate products"
+        }
+      ]
     }
   ]
 }

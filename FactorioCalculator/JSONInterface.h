@@ -21,14 +21,14 @@ namespace json {
 		struct FactorioCalculations::Item* makeItem(rapidjson::Value&);
 		struct FactorioCalculations::Furnace* makeFurnace(rapidjson::Value&);
 		struct FactorioCalculations::Assembler* makeAssemblingMachine(rapidjson::Value&);
-
+		struct FactorioCalculations::Tool* makeTool(rapidjson::Value&);
 
 		/*struct FactorioCalculations::Resource makeFluid(rapidjson::Value&);
 		struct FactorioCalculations::Resource makeAssemblingMachine(rapidjson::Value&);
 		struct FactorioCalculations::Resource makeProcess(rapidjson::Value&);*/
 
 	public:
-		JSONInterface(const char* fileName);
+		JSONInterface();
 		~JSONInterface();
 
 		/*
@@ -36,8 +36,10 @@ namespace json {
 		@param char* the variable name
 		*/
 		const struct FactorioCalculations::Element* getValue(const char*);
-
 		const struct FactorioCalculations::Element* getValueWithHint(const char* name , const char* prototype);
+		const std::map<const char*, const char*>* getTabs();
+
+		void init(const char*);
 
 		/*
 		checks if a given value exists

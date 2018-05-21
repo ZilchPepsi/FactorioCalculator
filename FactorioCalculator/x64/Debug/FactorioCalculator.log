@@ -1,29 +1,6 @@
-﻿  stdafx.cpp
+﻿  GuiEventHandler.cpp
+c:\users\mcgiv\source\repos\factoriocalculator\factoriocalculator\guieventhandler.cpp(101): error C2039: 'parseCalcToString': is not a member of 'GuiEventHandler'
+  c:\users\mcgiv\source\repos\factoriocalculator\factoriocalculator\guieventhandler.h(10): note: see declaration of 'GuiEventHandler'
+c:\users\mcgiv\source\repos\factoriocalculator\factoriocalculator\guieventhandler.cpp(107): error C2065: 'retval': undeclared identifier
   FactorioCalculator.cpp
-FactorioCalculator.rc(23): warning RC2182: duplicate dialog control ID 0
-  
-FactorioCalculator.rc(24): warning RC2182: duplicate dialog control ID 0
-  
-FactorioCalculator.rc(25): warning RC2182: duplicate dialog control ID 0
-  
-FactorioCalculator.rc(26): warning RC2182: duplicate dialog control ID 0
-  
-FactorioCalculator.rc(27): warning RC2182: duplicate dialog control ID 0
-  
-FactorioCalculator.rc(29): warning RC2182: duplicate dialog control ID 0
-  
-FactorioCalculator.rc(30): warning RC2182: duplicate dialog control ID 0
-  
-FactorioCalculator.rc(31): warning RC2182: duplicate dialog control ID 0
-  
-FactorioCalculator.rc(32): warning RC2182: duplicate dialog control ID 1
-  
-FactorioCalculator.rc(33): warning RC2182: duplicate dialog control ID 0
-  
-FactorioCalculator.rc(34): warning RC2182: duplicate dialog control ID 0
-  
-FactorioCalculator.rc(35): warning RC2182: duplicate dialog control ID 0
-  
-FactorioCalculator.rc(36): warning RC2182: duplicate dialog control ID 0
-  
-  FactorioCalculator.vcxproj -> D:\Development\github\FactorioCalculator\x64\Debug\FactorioCalculator.exe
+  Generating Code...

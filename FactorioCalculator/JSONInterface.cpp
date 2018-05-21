@@ -1,5 +1,4 @@
 #include "stdafx.h"
-//#include "JSONInterface.h"
 #include <fstream>
 #include <string>
 #include <iostream>
@@ -30,7 +29,11 @@ void JSONInterface::importJSON(const char* fileName)
 	doc->Parse(file.c_str());
 }
 
-JSONInterface::JSONInterface(const char* fileName)
+JSONInterface::JSONInterface()
+{
+}
+
+void JSONInterface::init(const char* fileName)
 {
 	importJSON(fileName);
 }
@@ -39,6 +42,26 @@ JSONInterface::~JSONInterface()
 {
 	delete doc;
 }
+
+const std::map<const char*, const char*>* JSONInterface::getTabs()
+{
+	std::map<const char*, const char*>* map = new std::map<const char*, const char*>;
+
+	using namespace rapidjson;
+
+	const Value& root = (*doc)["prototypes"];
+
+	for (auto& protos : root.GetArray())
+	{
+		for (auto& thing : protos["items"].GetArray())
+		{
+			map->insert(std::pair<const char*, const char*>(thing["name"].GetString(), protos["prototype"].GetString()));
+		}
+	}
+
+	return map;
+}
+
 
 const struct FactorioCalculations::Element* JSONInterface::getValue(const char* s)
 {
@@ -62,6 +85,7 @@ const struct FactorioCalculations::Element* JSONInterface::getValue(const char* 
 				case Prototypes::MINING_DRILL:		return makeMiner((rapidjson::Value&)thing);
 				case Prototypes::FURNACE:			return makeFurnace((rapidjson::Value&)thing);
 				case Prototypes::ASSEMBLINGMACHINE: return makeAssemblingMachine((rapidjson::Value&)thing);
+				case Prototypes::TOOL:				return makeTool((rapidjson::Value&)thing);
 				}
 				//if you got here, then the prototype is not recognized or the switch doesn't have that prototype yet
 				assert(false);
@@ -97,6 +121,7 @@ const struct FactorioCalculations::Element* JSONInterface::getValueWithHint(cons
 					case Prototypes::MINING_DRILL:		return makeMiner((rapidjson::Value&)thing);
 					case Prototypes::FURNACE:			return makeFurnace((rapidjson::Value&)thing);
 					case Prototypes::ASSEMBLINGMACHINE: return makeAssemblingMachine((rapidjson::Value&)thing);
+					case Prototypes::TOOL:				return makeTool((rapidjson::Value&)thing);
 						//TODO fill out this as above
 					}
 					//if you got here, then the prototype is not recognized
@@ -186,6 +211,29 @@ struct FactorioCalculations::Furnace* JSONInterface::makeFurnace(rapidjson::Valu
 		f->craftMethod = FactorioCalculations::CraftMethods::cCRAFT;
 
 	return f;
+}
+
+struct FactorioCalculations::Tool* JSONInterface::makeTool(rapidjson::Value& val)
+{
+	FactorioCalculations::Tool* t = new FactorioCalculations::Tool;
+
+	t->prototype = FactorioCalculations::Prototypes::TOOL;
+	t->name = val["name"].GetString();
+	t->craftTime = val["craftTime"].GetDouble();
+	for (rapidjson::Value& v : val["ingredients"].GetArray())
+	{
+		FactorioCalculations::Ingredient* e = new FactorioCalculations::Ingredient;
+		e->name = v["name"].GetString();
+		e->prototype = v["prototype"].GetString();
+		e->count = v["count"].GetInt();
+		t->ingredients.push_back(e);
+	}
+	if (val.HasMember("craftMethod"))
+		t->craftMethod = FactorioCalculations::getCraftMethod(val["craftMethod"].GetString());
+	else
+		t->craftMethod = FactorioCalculations::CraftMethods::cCRAFT;
+
+	return t;
 }
 
 struct FactorioCalculations::Assembler* JSONInterface::makeAssemblingMachine(rapidjson::Value& val)
