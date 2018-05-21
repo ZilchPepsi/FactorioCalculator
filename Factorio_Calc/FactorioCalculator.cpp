@@ -2,8 +2,14 @@
 #include <iostream>
 #include <cmath>
 
-FactorioCalculator::FactorioCalculator(const char* fileName) : jsonInterface(fileName)
+FactorioCalculator::FactorioCalculator(const char* fileName)
+{}
+
+void FactorioCalculator::init(const char* fileName)
 {
+
+	jsonInterface.init(fileName);
+
 	using namespace FactorioCalculations;
 	stoneFurnace = (Furnace*)jsonInterface.getValueWithHint("Stone Furnace", "FURNACE");
 	steelFurnace = (Furnace*)jsonInterface.getValueWithHint("Steel Furnace", "FURNACE");
@@ -13,7 +19,6 @@ FactorioCalculator::FactorioCalculator(const char* fileName) : jsonInterface(fil
 	asm2 = (Assembler*)jsonInterface.getValueWithHint("Assembling Machine 2", "ASSEMBLINGMACHINE");
 	asm3 = (Assembler*)jsonInterface.getValueWithHint("Assembling Machine 3", "ASSEMBLINGMACHINE");
 }
-
 
 FactorioCalculator::~FactorioCalculator()
 {
@@ -59,6 +64,12 @@ void FactorioCalculator::printString( FactorioCalculator::FactorySetup& fs)
 	std::cout << "refineries: " << fs.refineries << std::endl;
 }
 
+const std::map<const char*, const char*>* FactorioCalculator::getTabs()
+{
+	return jsonInterface.getTabs();
+
+
+}
 
 
 void FactorioCalculator::calculateFactorySetup(const char* element, double rate, std::vector <struct FactorySetup*>& factorySetup)

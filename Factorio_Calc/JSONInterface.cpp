@@ -29,7 +29,11 @@ void JSONInterface::importJSON(const char* fileName)
 	doc->Parse(file.c_str());
 }
 
-JSONInterface::JSONInterface(const char* fileName)
+JSONInterface::JSONInterface()
+{
+}
+
+void JSONInterface::init(const char* fileName)
 {
 	importJSON(fileName);
 }
@@ -38,6 +42,26 @@ JSONInterface::~JSONInterface()
 {
 	delete doc;
 }
+
+const std::map<const char*, const char*>* JSONInterface::getTabs()
+{
+	std::map<const char*, const char*>* map = new std::map<const char*, const char*>;
+
+	using namespace rapidjson;
+
+	const Value& root = (*doc)["prototypes"];
+
+	for (auto& protos : root.GetArray())
+	{
+		for (auto& thing : protos["items"].GetArray())
+		{
+			map->insert(std::pair<const char*, const char*>(thing["name"].GetString(), protos["prototype"].GetString()));
+		}
+	}
+
+	return map;
+}
+
 
 const struct FactorioCalculations::Element* JSONInterface::getValue(const char* s)
 {

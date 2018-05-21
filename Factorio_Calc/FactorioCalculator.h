@@ -49,7 +49,9 @@ public:
 	@param vector<FactorySetup*>& the array that will contain the factory afterwards
 	*/
 	void calculateFactorySetup(const char*, double, std::vector<FactorySetup*>&);
+	const std::map<const char*, const char*>* getTabs();
 	void printString(FactorySetup&);
+	void init(const char *);
 
 private:
 	struct FactorySetup* contains(std::vector<FactorySetup*>&, const FactorioCalculations::Element*);

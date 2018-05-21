@@ -1,7 +1,7 @@
 #ifndef JSONINTERFACE
 #define JSONINTERFACE
 
-#include "C:\Users\McGiv\source\repos\FactorioCalculator\node_modules\rapidjson\include\rapidjson\document.h"
+#include "document.h"
 #include "Calculator.h"
 
 namespace json {
@@ -28,7 +28,7 @@ namespace json {
 		struct FactorioCalculations::Resource makeProcess(rapidjson::Value&);*/
 
 	public:
-		JSONInterface(const char* fileName);
+		JSONInterface();
 		~JSONInterface();
 
 		/*
@@ -36,8 +36,10 @@ namespace json {
 		@param char* the variable name
 		*/
 		const struct FactorioCalculations::Element* getValue(const char*);
-
 		const struct FactorioCalculations::Element* getValueWithHint(const char* name , const char* prototype);
+		const std::map<const char*, const char*>* getTabs();
+
+		void init(const char*);
 
 		/*
 		checks if a given value exists
