@@ -1,6 +1,0 @@
-﻿  GuiEventHandler.cpp
-c:\users\mcgiv\source\repos\factoriocalculator\factoriocalculator\guieventhandler.cpp(101): error C2039: 'parseCalcToString': is not a member of 'GuiEventHandler'
-  c:\users\mcgiv\source\repos\factoriocalculator\factoriocalculator\guieventhandler.h(10): note: see declaration of 'GuiEventHandler'
-c:\users\mcgiv\source\repos\factoriocalculator\factoriocalculator\guieventhandler.cpp(107): error C2065: 'retval': undeclared identifier
-  FactorioCalculator.cpp
-  Generating Code...
