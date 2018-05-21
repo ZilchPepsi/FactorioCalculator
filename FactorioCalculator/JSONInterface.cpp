@@ -43,9 +43,9 @@ JSONInterface::~JSONInterface()
 	delete doc;
 }
 
-const std::map<const char*, const char*>* JSONInterface::getTabs()
+const std::map<const char*, FactorioCalculations::Prototypes>* JSONInterface::getTabs()
 {
-	std::map<const char*, const char*>* map = new std::map<const char*, const char*>;
+	std::map<const char*, FactorioCalculations::Prototypes>* map = new std::map<const char*, FactorioCalculations::Prototypes>;
 
 	using namespace rapidjson;
 
@@ -55,7 +55,7 @@ const std::map<const char*, const char*>* JSONInterface::getTabs()
 	{
 		for (auto& thing : protos["items"].GetArray())
 		{
-			map->insert(std::pair<const char*, const char*>(thing["name"].GetString(), protos["prototype"].GetString()));
+			map->insert(std::pair<const char*, FactorioCalculations::Prototypes>(thing["name"].GetString(), FactorioCalculations::getPrototype(protos["prototype"].GetString())));
 		}
 	}
 
