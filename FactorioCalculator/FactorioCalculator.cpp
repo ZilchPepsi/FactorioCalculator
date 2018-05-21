@@ -70,7 +70,12 @@ utility function for printing out FactorySetup struct to string
 std::wstring FactorioCalculator::printToString(FactorioCalculator::FactorySetup& fs)
 {
 	std::wstring retval = L"";
-	retval += (wchar_t)(fs.element->name) + WIN_RTN;// + WIN_RTN;
+	//retval += (wchar_t)(fs.element->name) + WIN_RTN;// + WIN_RTN;
+	for (int i = 0; i < strlen(fs.element->name); i++)
+	{
+		retval += (wchar_t)(fs.element->name[i]);
+	}
+	retval += WIN_RTN;
 	retval += WIN_RTN;
 
 	retval += L"asm1: " + std::to_wstring(fs.asm1) + WIN_RTN;
