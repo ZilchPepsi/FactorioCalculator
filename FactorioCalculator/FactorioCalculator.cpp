@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cmath>
 
-FactorioCalculator::FactorioCalculator(const char* fileName)
+FactorioCalculator::FactorioCalculator()
 {}
 
 void FactorioCalculator::init(const char* fileName)

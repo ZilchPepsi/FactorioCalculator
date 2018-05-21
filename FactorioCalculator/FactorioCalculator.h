@@ -39,7 +39,7 @@ public:
 		}
 	};
 
-	FactorioCalculator(const char*);
+	FactorioCalculator();
 	~FactorioCalculator();
 
 	/*
