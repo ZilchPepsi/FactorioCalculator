@@ -37,7 +37,7 @@ namespace json {
 		*/
 		const struct FactorioCalculations::Element* getValue(const char*);
 		const struct FactorioCalculations::Element* getValueWithHint(const char* name , const char* prototype);
-		const std::map<const char*, FactorioCalculations::Prototypes>* getTabs();
+		const std::map<const char*, FactorioCalculations::Tabs>* getTabs();
 
 		void init(const char*);
 

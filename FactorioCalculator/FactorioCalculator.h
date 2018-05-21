@@ -52,7 +52,7 @@ public:
 	@param vector<FactorySetup*>& the array that will contain the factory afterwards
 	*/
 	void calculateFactorySetup(const char*, double, std::vector<FactorySetup*>&);
-	const std::map<const char*, FactorioCalculations::Prototypes>* getTabs();
+	const std::map<const char*, FactorioCalculations::Tabs>* getTabs();
 	void printString(FactorySetup&);
 	std::wstring printToString(FactorySetup& fs);
 	void init(const char *);

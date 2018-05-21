@@ -94,7 +94,7 @@ std::wstring FactorioCalculator::printToString(FactorioCalculator::FactorySetup&
 	return retval;
 }
 
-const std::map<const char*, FactorioCalculations::Prototypes>* FactorioCalculator::getTabs()
+const std::map<const char*, FactorioCalculations::Tabs>* FactorioCalculator::getTabs()
 {
 	return jsonInterface.getTabs();
 
