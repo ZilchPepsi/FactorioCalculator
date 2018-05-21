@@ -2,6 +2,8 @@
 
 #include "stdafx.h"
 
+//#define FILENAME_ITEM "Items.json"
+
 using namespace std;
 
 class GuiEventHandler
@@ -37,6 +39,6 @@ class GuiEventHandler
 		vector<std::wstring> output_items = { L"init item 0", L"init item 1" };
 
 		std::vector<struct FactorioCalculator::FactorySetup*> factory;
-		FactorioCalculator calc("Items.json");
+		//FactorioCalculator calc("Items.json");
 };
 

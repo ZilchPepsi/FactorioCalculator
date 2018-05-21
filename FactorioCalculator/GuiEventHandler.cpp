@@ -8,7 +8,6 @@ GuiEventHandler::~GuiEventHandler(){}
 
 std::string GuiEventHandler::init() 
 {
-	//calc.calculateFactorySetup("Iron Plate", 5, factory);
 	return "handler init";
 }
 
@@ -17,7 +16,10 @@ std::string GuiEventHandler::destroy()
 	/*
 	TODO
 	*/
-	//for(int i = 0; i<factory.size(); )
+	for (int i = 0; i < factory.size(); i++)
+	{
+		delete factory[i];
+	}
 	return "handler destroy";
 }
 
@@ -26,6 +28,8 @@ std::string GuiEventHandler::btn_click_calculate()
 	/* 
 		TODO
 	*/
+	FactorioCalculator calc("Items.json");
+	calc.calculateFactorySetup("Iron Plate", 5, factory);
 	return "btn_click_calculate";
 }
 std::string GuiEventHandler::btn_click_reset()
@@ -92,4 +96,13 @@ vector<std::wstring> * GuiEventHandler::get_per_items()
 vector<std::wstring> * GuiEventHandler::get_output_items()
 {
 	return &output_items;
+}
+
+std::string GuiEventHandler::parseCalcToString()
+{
+	//std::string retval = falc;
+
+	//for()
+
+	return retval;
 }

@@ -1,4 +1,50 @@
 ﻿  stdafx.cpp
-D:\Development\github\FactorioCalculator\Factorio_Calc\FactorioCalculator.h(18): warning C4251: 'FactorioCalculator::jsonInterface': class 'json::JSONInterface' needs to have dll-interface to be used by clients of class 'FactorioCalculator'
-  d:\development\github\factoriocalculator\factorio_calc\JSONInterface.h(15): note: see declaration of 'json::JSONInterface'
-d:\development\github\factoriocalculator\factoriocalculator\GuiEventHandler.h(40): error C2059: syntax error: 'string'
+  FactorioCalculator.cpp
+FactorioCalculator.cpp(7): error C2512: 'json::JSONInterface': no appropriate default constructor available
+  d:\development\github\factoriocalculator\factoriocalculator\JSONInterface.h(16): note: see declaration of 'json::JSONInterface'
+FactorioCalculator.cpp(31): error C2065: 'JSONInterface': undeclared identifier
+FactorioCalculator.cpp(31): error C2146: syntax error: missing ';' before identifier 'jsonInterface'
+FactorioCalculator.cpp(31): error C3861: 'jsonInterface': identifier not found
+FactorioCalculator.cpp(33): error C2065: 'stoneFurnace': undeclared identifier
+FactorioCalculator.cpp(33): error C2065: 'jsonInterface': undeclared identifier
+FactorioCalculator.cpp(33): error C2228: left of '.getValueWithHint' must have class/struct/union
+  FactorioCalculator.cpp(33): note: type is 'unknown-type'
+FactorioCalculator.cpp(34): error C2065: 'steelFurnace': undeclared identifier
+FactorioCalculator.cpp(34): error C2065: 'jsonInterface': undeclared identifier
+FactorioCalculator.cpp(34): error C2228: left of '.getValueWithHint' must have class/struct/union
+  FactorioCalculator.cpp(34): note: type is 'unknown-type'
+FactorioCalculator.cpp(35): error C2065: 'electricFurnace': undeclared identifier
+FactorioCalculator.cpp(35): error C2065: 'jsonInterface': undeclared identifier
+FactorioCalculator.cpp(35): error C2228: left of '.getValueWithHint' must have class/struct/union
+  FactorioCalculator.cpp(35): note: type is 'unknown-type'
+FactorioCalculator.cpp(37): error C2065: 'asm1': undeclared identifier
+FactorioCalculator.cpp(37): error C2065: 'jsonInterface': undeclared identifier
+FactorioCalculator.cpp(37): error C2228: left of '.getValueWithHint' must have class/struct/union
+  FactorioCalculator.cpp(37): note: type is 'unknown-type'
+FactorioCalculator.cpp(38): error C2065: 'asm2': undeclared identifier
+FactorioCalculator.cpp(38): error C2065: 'jsonInterface': undeclared identifier
+FactorioCalculator.cpp(38): error C2228: left of '.getValueWithHint' must have class/struct/union
+  FactorioCalculator.cpp(38): note: type is 'unknown-type'
+FactorioCalculator.cpp(39): error C2065: 'asm3': undeclared identifier
+FactorioCalculator.cpp(39): error C2065: 'jsonInterface': undeclared identifier
+FactorioCalculator.cpp(39): error C2228: left of '.getValueWithHint' must have class/struct/union
+  FactorioCalculator.cpp(39): note: type is 'unknown-type'
+  FactorioCalculatorGUI.cpp
+FactorioCalculatorGUI.cpp(210): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
+FactorioCalculatorGUI.cpp(213): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
+FactorioCalculatorGUI.cpp(216): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
+FactorioCalculatorGUI.cpp(217): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
+FactorioCalculatorGUI.cpp(218): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
+FactorioCalculatorGUI.cpp(219): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
+FactorioCalculatorGUI.cpp(221): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
+FactorioCalculatorGUI.cpp(222): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
+FactorioCalculatorGUI.cpp(225): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
+FactorioCalculatorGUI.cpp(228): warning C4312: 'type cast': conversion from 'const unsigned int' to 'HMENU' of greater size
+  GuiEventHandler.cpp
+GuiEventHandler.cpp(31): error C2664: 'FactorioCalculator::FactorioCalculator(const FactorioCalculator &)': cannot convert argument 1 from 'const char [11]' to 'const FactorioCalculator &'
+  GuiEventHandler.cpp(31): note: Reason: cannot convert from 'const char [11]' to 'const FactorioCalculator'
+  GuiEventHandler.cpp(31): note: No constructor could take the source type, or constructor overload resolution was ambiguous
+GuiEventHandler.cpp(101): error C2039: 'parseCalcToString': is not a member of 'GuiEventHandler'
+  d:\development\github\factoriocalculator\factoriocalculator\GuiEventHandler.h(10): note: see declaration of 'GuiEventHandler'
+GuiEventHandler.cpp(107): error C2065: 'retval': undeclared identifier
+  JSONInterface.cpp

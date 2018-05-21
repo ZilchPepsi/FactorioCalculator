@@ -1,0 +1,648 @@
+{
+  "prototypes": [
+    {
+      "prototype": "RESOURCE",
+      "items": [
+        {
+          "name": "Coal",
+          "miningHardness": 0.9,
+          "miningTime": 2,
+          "fuelValue": 8000000,
+          "vehicleAcceleration": 1,
+          "tab": "intermediate products"
+        },
+        {
+          "name": "Stone",
+          "miningHardness": 0.4,
+          "miningTime": 2,
+          "tab": "intermediate products"
+        },
+        {
+          "name": "Iron Ore",
+          "miningHardness": 0.9,
+          "miningTime": 2,
+          "tab": "intermediate products"
+        },
+        {
+          "name": "Copper Ore",
+          "miningHardness": 0.9,
+          "miningTime": 2,
+          "tab": "intermediate products"
+        },
+        {
+          "name": "Uranium Ore",
+          "miningHardness": 0.9,
+          "miningTime": 4,
+          "tab": "intermediate products"
+        },
+        {
+          "name": "Raw Wood",
+          "miningHardness": 0.5,
+          "miningTime": 2,
+          "fuelValue": 4000000,
+          "tab": "intermediate products"
+        }
+      ]
+    },
+    {
+      "prototype": "FLUID",
+      "items": [
+        {
+          "name": "Crude Oil",
+          "requiredTech": "Oil Processing",
+          "produceReq": [
+            {
+              "prototype": "miningDrill",
+              "name": "Pumpjack"
+            }
+          ],
+          "craftMethod": "cGROUND",
+          "tab": "intermediate products"
+        },
+        {
+          "name": "Heavy Oil",
+          "requiredTech": "Oil Processing",
+          "produceReq": [
+            {
+              "prototype": "ASSEMBLINGMACHINE",
+              "name": "Oil Refinery"
+            },
+            {
+              "prototype": "ASSEMBLINGMACHINE",
+              "name": "Chemical Plant"
+            }
+          ],
+          "craftMethod": "cPROCESS",
+          "tab": "intermediate products"
+        },
+        {
+          "name": "Light Oil",
+          "requiredTech": "Oil Processing",
+          "produceReq": [
+            {
+              "prototype": "ASSEMBLINGMACHINE",
+              "name": "Oil Refinery"
+            },
+            {
+              "prototype": "ASSEMBLINGMACHINE",
+              "name": "Chemical Plant"
+            }
+          ],
+          "craftMethod": "cPROCESS",
+          "tab": "intermediate products"
+        },
+        {
+          "name": "Lubricant",
+          "requiredTech": "Oil Processing",
+          "produceReq": [
+            {
+              "prototype": "ASSEMBLINGMACHINE",
+              "name": "Chemical Plant"
+            }
+          ],
+          "ingredients": [
+            {
+              "prototype": "FLUID",
+              "name": "Heavy Oil",
+              "count": 10
+            }
+          ],
+          "craftTime": 1,
+          "outputCount": 10,
+          "craftMethod": "cPROCESS",
+          "tab": "intermediate products"
+        },
+        {
+          "name": "Water",
+          "produceReq": [
+            {
+              "prototype": "offshorePump",
+              "name": "Offshore Pump"
+            }
+          ],
+          "craftMethod": "cOFFSHOREPUMP",
+          "tab": "intermediate products"
+        },
+        {
+          "name": "Petroleum Gas",
+          "requiredTech": "Oil Processing",
+          "produceReq": [
+            {
+              "prototype": "ASSEMBLINGMACHINE",
+              "name": "Oil Refinery"
+            },
+            {
+              "prototype": "ASSEMBLINGMACHINE",
+              "name": "Chemical Plant"
+            }
+          ],
+          "craftMethod": "cPROCESS",
+          "tab": "intermediate products"
+        },
+        {
+          "name": "Sulfuric Acid",
+          "requiredTech": "Sulfur Processing",
+          "produceReq": [
+            {
+              "prototype": "ASSEMBLINGMACHINE",
+              "name": "Chemical Plant"
+            }
+          ],
+          "craftMethod": "cPROCESS",
+          "tab": "intermediate products"
+        },
+        {
+          "name": "Steam",
+          "produceReq": [
+            {
+              "prototype": "boiler",
+              "name": "Boiler"
+            },
+            {
+              "prototype": "boiler",
+              "name": "Heat Exchanger"
+            }
+          ],
+          "craftMethod": "cBOILER",
+          "tab": "intermediate products"
+        }
+      ]
+    },
+    {
+      "prototype": "ASSEMBLINGMACHINE",
+      "items": [
+        {
+          "name": "Assembling Machine 1",
+          "dimensionX": 3,
+          "dimensionY": 3,
+          "energyConsumption": 90000,
+          "energyDrain": 3000,
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Electronic Circuit",
+              "count": 3
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Iron Gear Wheel",
+              "count": 5
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Iron Plate",
+              "count": 9
+            }
+          ],
+          "craftTime": 0.5,
+          "craftSpeed": 0.5,
+          "pollution": 3,
+          "moduleSlots": 0,
+          "tab": "production"
+        },
+        {
+          "name": "Assembling Machine 2",
+          "dimensionX": 3,
+          "dimensionY": 3,
+          "energyConsumption": 150000,
+          "energyDrain": 5000,
+          "ingredients": [
+            {
+              "prototype": "ASSEMBLINGMACHINE",
+              "name": "Assembling Machine 1",
+              "count": 1
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Electronic Circuit",
+              "count": 3
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Iron Gear Wheel",
+              "count": 5
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Iron Plate",
+              "count": 9
+            }
+          ],
+          "craftTime": 0.5,
+          "craftSpeed": 0.75,
+          "pollution": 2.4,
+          "moduleSlots": 2,
+          "tab": "production"
+        },
+        {
+          "name": "Assembling Machine 3",
+          "dimensionX": 3,
+          "dimensionY": 3,
+          "energyConsumption": 210000,
+          "energyDrain": 7000,
+          "ingredients": [
+            {
+              "prototype": "ASSEMBLINGMACHINE",
+              "name": "Assembling Machine 2",
+              "count": 2
+            },
+            {
+              "prototype": "module",
+              "name": "Speed Module",
+              "count": 4
+            }
+          ],
+          "craftTime": 0.5,
+          "craftSpeed": 1.25,
+          "pollution": 1.8,
+          "moduleSlots": 4,
+          "tab": "production"
+        },
+        {
+          "name": "Oil Refinery",
+          "dimensionX": 5,
+          "dimensionY": 5,
+          "energyConsumption": 420000,
+          "energyDrain": 14000,
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Electronic Circuit",
+              "count": 10
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Iron Gear Wheel",
+              "count": 10
+            },
+            {
+              "prototype": "pipe",
+              "name": "Pipe",
+              "count": 10
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Steel Plate",
+              "count": 15
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Stone Brick",
+              "count": 10
+            }
+          ],
+          "craftTime": 8,
+          "craftSpeed": 1,
+          "pollution": 3.6,
+          "moduleSlots": 3,
+          "requiredTech": "Oil Processing",
+          "tab": "production"
+        }
+      ]
+    },
+    {
+      "prototype": "ITEM",
+      "items": [
+        {
+          "name": "Wood",
+          "ingredients": [
+            {
+              "prototype": "RESOURCE",
+              "name": "Raw Wood",
+              "count": 1
+            }
+          ],
+          "craftTime": 0.5,
+          "outputCount": 1,
+          "tab": "intermediate products"
+        },
+        {
+          "name": "Iron Plate",
+          "ingredients": [
+            {
+              "prototype": "RESOURCE",
+              "name": "Iron Ore",
+              "count": 1
+            }
+          ],
+          "craftTime": 3.5,
+          "craftMethod": "cFURNACE",
+          "tab": "intermediate products"
+        },
+        {
+          "name": "Copper Plate",
+          "ingredients": [
+            {
+              "prototype": "RESOURCE",
+              "name": "Copper Ore",
+              "count": 1
+            }
+          ],
+          "craftTime": 3.5,
+          "craftMethod": "cFURNACE",
+          "tab": "intermediate products"
+        },
+        {
+          "name": "Iron Gear Wheel",
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Iron Plate",
+              "count": 2
+            }
+          ],
+          "craftTime": 3.5,
+          "tab": "intermediate products"
+        },
+        {
+          "name": "Electronic Circuit",
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Copper Cable",
+              "count": 3
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Iron Plate",
+              "count": 1
+            }
+          ],
+          "craftTime": 0.5,
+          "tab": "intermediate products"
+        },
+        {
+          "name": "Copper Cable",
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Copper Plate",
+              "count": 1
+            }
+          ],
+          "craftTime": 0.5,
+          "outputCount": 2
+        }
+      ]
+    },
+    {
+      "prototype": "MINING_DRILL",
+      "items": [
+        {
+          "name": "Electric Mining Drill",
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Electronic Circuit",
+              "count": 3
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Iron Gear Wheel",
+              "count": 5
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Iron Plate",
+              "count": 10
+            }
+          ],
+          "craftTime": 2,
+          "miningPower": 3,
+          "miningSpeed": 0.5,
+          "dimensionX": 3,
+          "dimensionY": 3,
+          "energyConsumption": 90000,
+          "miningAreaX": 5,
+          "miningAreaY": 5,
+          "tab": "production"
+        }
+      ]
+
+    },
+    {
+      "prototype": "PROCESS",
+      "items": [
+        {
+          "name": "Basic Oil Processing",
+          "RequiredTech": "Oil Processing",
+          "inputs": [
+            {
+              "prototype": "liquid",
+              "name": "Crude Oil",
+              "count": 100
+            }
+          ],
+          "outputs": [
+            {
+              "prototype": "liquid",
+              "name": "Heavy Oil",
+              "count": 30
+            },
+            {
+              "prototype": "liquid",
+              "name": "Light Oil",
+              "count": 30
+            },
+            {
+              "prototype": "liquid",
+              "name": "Petroleum Gas",
+              "count": 40
+            }
+          ],
+          "craftTime": 5
+        },
+        {
+          "name": "Advanced Oil Processing",
+          "RequiredTech": "Advanced Oil Processing",
+          "inputs": [
+            {
+              "prototype": "liquid",
+              "name": "Crude Oil",
+              "count": 100
+            },
+            {
+              "prototype": "liquid",
+              "name": "Water",
+              "count": 50
+            }
+          ],
+          "outputs": [
+            {
+              "prototype": "liquid",
+              "name": "Heavy Oil",
+              "count": 10
+            },
+            {
+              "prototype": "liquid",
+              "name": "Light Oil",
+              "count": 45
+            },
+            {
+              "prototype": "liquid",
+              "name": "Petroleum Gas",
+              "count": 55
+            }
+          ],
+          "craftTime": 5
+        },
+        {
+          "name": "Heavy Oil Cracking",
+          "RequiredTech": "Advanced Oil Processing",
+          "inputs": [
+            {
+              "prototype": "liquid",
+              "name": "Heavy Oil",
+              "count": 40
+            },
+            {
+              "prototype": "liquid",
+              "name": "Water",
+              "count": 30
+            }
+          ],
+          "outputs": [
+            {
+              "prototype": "liquid",
+              "name": "Light Oil",
+              "count": 30
+            }
+          ],
+          "craftTime": 3
+        },
+        {
+          "name": "Light Oil Cracking",
+          "RequiredTech": "Advanced Oil Processing",
+          "inputs": [
+            {
+              "prototype": "liquid",
+              "name": "Light Oil",
+              "count": 30
+            },
+            {
+              "prototype": "liquid",
+              "name": "Water",
+              "count": 30
+            }
+          ],
+          "outputs": [
+            {
+              "prototype": "liquid",
+              "name": "Petroleum Gas",
+              "count": 20
+            }
+          ],
+          "craftTime": 3
+        },
+        {
+          "name": "Coal Liquefaction",
+          "RequiredTech": "Coal Liquefaction",
+          "inputs": [
+            {
+              "prototype": "RESOURCE",
+              "name": "Coal",
+              "count": 10
+            },
+            {
+              "prototype": "liquid",
+              "name": "Heavy Oil",
+              "count": 25
+            },
+            {
+              "prototype": "liquid",
+              "name": "Steam",
+              "count": 50
+            }
+          ],
+          "outputs": [
+            {
+              "prototype": "liquid",
+              "name": "Heavy Oil",
+              "count": 35
+            },
+            {
+              "prototype": "liquid",
+              "name": "Light Oil",
+              "count": 15
+            },
+            {
+              "prototype": "liquid",
+              "name": "Petroleum Gas",
+              "count": 20
+            }
+          ],
+          "craftTime": 5
+        }
+      ]
+    },
+    {
+      "prototype": "FURNACE",
+      "items": [
+        {
+          "name": "Stone Furnace",
+          "ingredients": [
+            {
+              "prototype": "RESOURCE",
+              "name": "Stone",
+              "count": 5
+            }
+          ],
+          "craftTime": 0.5,
+          "craftSpeed": 1,
+          "pollution": 1.8,
+          "moduleSlots": 0,
+          "tab": "production"
+        },
+        {
+          "name": "Steel Furnace",
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Steel Plate",
+              "count": 6
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Stone Brick",
+              "count": 10
+            }
+          ],
+          "craftTime": 3,
+          "craftSpeed": 2,
+          "pollution": 3.6,
+          "moduleSlots": 0,
+          "tab": "production",
+          "RequiredTech": "Advanced Material Processing"
+        },
+        {
+          "name": "Electric Furnace",
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Advanced Circuit",
+              "count": 5
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Stone Brick",
+              "count": 10
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Steel Plate",
+              "count": 10
+            }
+          ],
+          "craftTime": 5,
+          "craftSpeed": 2,
+          "pollution": 0.9,
+          "moduleSlots": 2,
+          "energyConsumption": 180000,
+          "energyDrain": 6000,
+          "tab": "production",
+          "RequiredTech": "Advanced Material Processing 2"
+        }
+      ]
+    }
+  ]
+}
