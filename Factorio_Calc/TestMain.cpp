@@ -9,7 +9,7 @@ int main()
 
 	std::vector<struct FactorioCalculator::FactorySetup*> factory;
 
-	calc.calculateFactorySetup("Assembling Machine 1", 5, factory);
+	calc.calculateFactorySetup("Science Pack 1", 5, factory);
 	//calc.calculateFactorySetup("Iron Gear Wheel", 5, factory);
 	//calc.calculateFactorySetup("Iron Plate", 5, factory);
 	//calc.calculateFactorySetup("Electronic Circuit", 5, factory);

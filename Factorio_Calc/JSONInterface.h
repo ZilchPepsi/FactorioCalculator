@@ -21,7 +21,7 @@ namespace json {
 		struct FactorioCalculations::Item* makeItem(rapidjson::Value&);
 		struct FactorioCalculations::Furnace* makeFurnace(rapidjson::Value&);
 		struct FactorioCalculations::Assembler* makeAssemblingMachine(rapidjson::Value&);
-
+		struct FactorioCalculations::Tool* makeTool(rapidjson::Value&);
 
 		/*struct FactorioCalculations::Resource makeFluid(rapidjson::Value&);
 		struct FactorioCalculations::Resource makeAssemblingMachine(rapidjson::Value&);

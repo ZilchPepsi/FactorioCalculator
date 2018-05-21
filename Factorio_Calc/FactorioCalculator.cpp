@@ -82,6 +82,8 @@ void FactorioCalculator::calculateFactorySetup(const char* element, double rate,
 		break;
 	case Prototypes::ASSEMBLINGMACHINE:
 		calculateAssemblyMachine(el, rate, factorySetup);
+	case Prototypes::TOOL:
+		calculateTool(el, rate, factorySetup);
 		break;
 	}
 }
@@ -199,9 +201,9 @@ void FactorioCalculator::calculateAssemblyMachine(const FactorioCalculations::El
 
 	if (FactorySetup* fs = contains(factorySetup, el))
 	{
-		fs->asm1 += rate / (1/asm1Time);
-		fs->asm2 += rate / (1/asm2Time);
-		fs->asm3 += rate / (1/asm3Time);
+		fs->asm1 += rate / asm1Time;
+		fs->asm2 += rate / asm2Time;
+		fs->asm3 += rate / asm3Time;
 	}
 	else
 	{
@@ -218,4 +220,9 @@ void FactorioCalculator::calculateAssemblyMachine(const FactorioCalculations::El
 	{
 		calculateFactorySetup(ing->name, rate*ing->count, factorySetup);
 	}
+}
+
+void FactorioCalculator::calculateTool(const FactorioCalculations::Element* el, double rate, std::vector<FactorySetup*>& factorySetup)
+{
+	calculateItem(el, rate, factorySetup);
 }

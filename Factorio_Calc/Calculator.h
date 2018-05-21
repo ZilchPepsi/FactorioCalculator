@@ -14,7 +14,7 @@ namespace FactorioCalculations {
 	/////////////////////////////////////////////////////////
 	////prototypes
 	/////////////////////////////////////////////////////////
-	const int PrototypeCount = 7;
+	const int PrototypeCount = 8;
 	const int CraftMethodCount = 6;
 
 	enum Prototypes {
@@ -24,7 +24,8 @@ namespace FactorioCalculations {
 		ITEM,
 		MINING_DRILL,
 		FURNACE,
-		PROCESS
+		PROCESS,
+		TOOL
 	};
 
 	static const char* Prototype_strings[] = {
@@ -34,7 +35,8 @@ namespace FactorioCalculations {
 		"ITEM",
 		"MINING_DRILL",
 		"FURNACE",
-		"PROCESS"
+		"PROCESS",
+		"TOOL"
 	};
 
 	enum CraftMethods {
@@ -148,6 +150,10 @@ namespace FactorioCalculations {
 		double pollution;
 		int64_t energyConsumption;
 		int64_t energyDrain;
+	};
+
+	struct Tool : Item {
+
 	};
 
 	/*
