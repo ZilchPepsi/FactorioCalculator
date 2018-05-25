@@ -11,30 +11,35 @@
           "vehicleAcceleration": 1,
           "tab": "INTERMEDIATEPRODUCTS"
         },
+
         {
           "name": "Stone",
           "miningHardness": 0.4,
           "miningTime": 2,
           "tab": "INTERMEDIATEPRODUCTS"
         },
+
         {
           "name": "Iron Ore",
           "miningHardness": 0.9,
           "miningTime": 2,
           "tab": "INTERMEDIATEPRODUCTS"
         },
+
         {
           "name": "Copper Ore",
           "miningHardness": 0.9,
           "miningTime": 2,
           "tab": "INTERMEDIATEPRODUCTS"
         },
+
         {
           "name": "Uranium Ore",
           "miningHardness": 0.9,
           "miningTime": 4,
           "tab": "INTERMEDIATEPRODUCTS"
         },
+
         {
           "name": "Raw Wood",
           "miningHardness": 0.5,
@@ -44,6 +49,7 @@
         }
       ]
     },
+
     {
       "prototype": "FLUID",
       "items": [
@@ -59,6 +65,7 @@
           "craftMethod": "cGROUND",
           "tab": "INTERMEDIATEPRODUCTS"
         },
+
         {
           "name": "Heavy Oil",
           "requiredTech": "Oil Processing",
@@ -75,6 +82,7 @@
           "craftMethod": "cPROCESS",
           "tab": "INTERMEDIATEPRODUCTS"
         },
+
         {
           "name": "Light Oil",
           "requiredTech": "Oil Processing",
@@ -91,6 +99,7 @@
           "craftMethod": "cPROCESS",
           "tab": "INTERMEDIATEPRODUCTS"
         },
+
         {
           "name": "Lubricant",
           "requiredTech": "Oil Processing",
@@ -112,6 +121,7 @@
           "craftMethod": "cPROCESS",
           "tab": "INTERMEDIATEPRODUCTS"
         },
+
         {
           "name": "Water",
           "produceReq": [
@@ -123,6 +133,7 @@
           "craftMethod": "cOFFSHOREPUMP",
           "tab": "INTERMEDIATEPRODUCTS"
         },
+
         {
           "name": "Petroleum Gas",
           "requiredTech": "Oil Processing",
@@ -139,6 +150,7 @@
           "craftMethod": "cPROCESS",
           "tab": "INTERMEDIATEPRODUCTS"
         },
+
         {
           "name": "Sulfuric Acid",
           "requiredTech": "Sulfur Processing",
@@ -151,6 +163,7 @@
           "craftMethod": "cPROCESS",
           "tab": "INTERMEDIATEPRODUCTS"
         },
+
         {
           "name": "Steam",
           "produceReq": [
@@ -168,6 +181,7 @@
         }
       ]
     },
+
     {
       "prototype": "ASSEMBLINGMACHINE",
       "items": [
@@ -313,7 +327,7 @@
             }
           ],
           "craftTime": 0.5,
-          "outputCount": 1,
+          "craftMethod": "cCRAFT",
           "tab": "INTERMEDIATEPRODUCTS"
         },
         {
@@ -343,6 +357,136 @@
           "tab": "INTERMEDIATEPRODUCTS"
         },
         {
+          "name": "Solid Fuel",
+          "ingredients": [
+          ],
+          "craftTime": 2.0,
+          "craftMethod": "cPROCESS",
+          "tab": "INTERMEDIATEPRODUCTS"
+        },
+        {
+          "name": "Steel Plate",
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Iron Plate",
+              "count": 5
+            }
+          ],
+          "craftTime": 17.5,
+          "craftMethod": "cFURNACE",
+          "tab": "INTERMEDIATEPRODUCTS"
+        },
+        {
+          "name": "Plastic Bar",
+          "ingredients": [
+            {
+              "prototype": "RESOURCE",
+              "name": "Coal",
+              "count": 1
+            },
+            {
+              "prototype": "FLUID",
+              "name": "Petroleum Gas",
+              "count": 20
+            }
+          ],
+          "craftTime": 1.0,
+          "craftMethod": "cPROCESS",
+          "tab": "INTERMEDIATEPRODUCTS"
+        },
+        {
+          "name": "Sulfur",
+          "ingredients": [
+            {
+              "prototype": "FLUID",
+              "name": "Petroleum Gas",
+              "count": 30
+            },
+            {
+              "prototype": "FLUID",
+              "name": "Water",
+              "count": 30
+            }
+          ],
+          "craftTime": 1.0,
+          "craftMethod": "cPROCESS",
+          "tab": "INTERMEDIATEPRODUCTS"
+        },
+        {
+          "name": "Battery",
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Copper Plate",
+              "count": 1
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Iron Plate",
+              "count": 1
+            },
+            {
+              "prototype": "FLUID",
+              "name": "Petroleum Gas",
+              "count": 20
+            }
+          ],
+          "craftTime": 5.0,
+          "craftMethod": "cPROCESS",
+          "tab": "INTERMEDIATEPRODUCTS"
+        },
+        {
+          "name": "Explosives",
+          "ingredients": [
+            {
+              "prototype": "RESOURCE",
+              "name": "Coal",
+              "count": 1
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Sulfur",
+              "count": 1
+            },
+            {
+              "prototype": "FLUID",
+              "name": "Water",
+              "count": 10
+            }
+          ],
+          "craftTime": 5.0,
+          "craftMethod": "cPROCESS",
+          "outputCount": 2,
+          "tab": "INTERMEDIATEPRODUCTS"
+        },
+        {
+          "name": "Copper Cable",
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Copper Plate",
+              "count": 1
+            }
+          ],
+          "craftTime": 0.5,
+          "craftMethod": "cCRAFT",
+          "outputCount": 2
+        },
+        {
+          "name": "Iron Stick",
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Iron Plate",
+              "count": 1
+            }
+          ],
+          "craftTime": 0.5,
+          "craftMethod": "cCRAFT",
+          "outputCount": 2
+        },
+        {
           "name": "Iron Gear Wheel",
           "ingredients": [
             {
@@ -352,7 +496,20 @@
             }
           ],
           "craftTime": 3.5,
+          "craftMethod": "cCRAFT",
           "tab": "INTERMEDIATEPRODUCTS"
+        },
+        {
+          "name": "Empty Barrel",
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Steel Plate",
+              "count": 1
+            }
+          ],
+          "craftTime": 1.0,
+          "craftMethod": "cCRAFT"
         },
         {
           "name": "Electronic Circuit",
@@ -369,19 +526,96 @@
             }
           ],
           "craftTime": 0.5,
+          "craftMethod": "cCRAFT",
           "tab": "INTERMEDIATEPRODUCTS"
         },
         {
-          "name": "Copper Cable",
+          "name": "Advanced Circuit",
           "ingredients": [
             {
               "prototype": "ITEM",
-              "name": "Copper Plate",
+              "name": "Copper Cable",
+              "count": 4
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Electronic Circuit",
+              "count": 2
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Plastic",
+              "count": 2
+            }
+          ],
+          "craftTime": 6.0,
+          "tab": "INTERMEDIATEPRODUCTS"
+        },
+        {
+          "name": "Processing Unit",
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Advanced Circuit",
+              "count": 2
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Electronic Circuit",
+              "count": 20
+            },
+            {
+              "prototype": "FLUID",
+              "name": "Sulfuric Acid",
+              "count": 5
+            }
+          ],
+          "craftTime": 10.0,
+          "tab": "INTERMEDIATEPRODUCTS"
+        },
+        {
+          "name": "Engine Unit",
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Iron Gear Wheel",
+              "count": 1
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Pipe",
+              "count": 2
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Steel Plate",
               "count": 1
             }
           ],
-          "craftTime": 0.5,
-          "outputCount": 2
+          "craftTime": 10,
+          "craftMethod": "cCRAFT"
+        },
+        {
+          "name": "Electric Engine Unit",
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Electronic Circuit",
+              "count": 2
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Engine Unit",
+              "count": 1
+            },
+            {
+              "prototype": "FLUID",
+              "name": "Lubricant",
+              "count": 15
+            }
+          ],
+          "craftTime": 10,
+          "craftMethod": "cCRAFT"
         }
       ]
     },
