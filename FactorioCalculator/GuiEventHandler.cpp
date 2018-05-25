@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "GuiEventHandler.h"
+#include <string>
 
 using namespace std;
 
@@ -45,7 +46,25 @@ std::wstring GuiEventHandler::rbtn_click_log()
 	/*
 	TODO
 	*/
-	return L"rbtn_click_log";
+	const std::vector<std::pair<const char*, FactorioCalculations::Prototypes>> vec = calc.getTab(FactorioCalculations::Tabs::LOGISTICS);
+
+	std::wstring retval = L"";
+
+	/*for (std::pair<const char*, FactorioCalculations::Prototypes> pair : vec)
+	{
+		const char*  x = pair.first;
+
+		while (x != NULL)
+		{
+			retval += *x;
+			x++;
+		}
+		retval += WIN_RTN;
+	}*/
+
+
+	return retval;
+	//return L"rbtn_click_log";
 }
 
 std::wstring GuiEventHandler::rbtn_click_prd()

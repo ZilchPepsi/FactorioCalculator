@@ -98,6 +98,10 @@ const std::map<const char*, FactorioCalculations::Tabs>* FactorioCalculator::get
 {
 	return jsonInterface.getTabs();
 }
+const std::vector<std::pair<const char*, FactorioCalculations::Prototypes>> FactorioCalculator::getTab(FactorioCalculations::Tabs tab)
+{
+	return jsonInterface.getTab(tab);
+}
 
 
 void FactorioCalculator::calculateFactorySetup(const char* element, double rate, std::vector <struct FactorySetup*>& factorySetup)

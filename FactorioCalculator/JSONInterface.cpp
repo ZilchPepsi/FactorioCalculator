@@ -55,11 +55,35 @@ const std::map<const char*, FactorioCalculations::Tabs>* JSONInterface::getTabs(
 	{
 		for (auto& thing : protos["items"].GetArray())
 		{
-			map->insert(std::pair<const char*, FactorioCalculations::Tabs>(thing["name"].GetString(), FactorioCalculations::getTab(thing["tab"].GetString)));
+			map->insert(std::pair<const char*, FactorioCalculations::Tabs>(thing["name"].GetString(), FactorioCalculations::getTab(thing["tab"].GetString())));
 		}
 	}
 
 	return map;
+}
+const std::vector<std::pair<const char*, FactorioCalculations::Prototypes>> JSONInterface::getTab(FactorioCalculations::Tabs tab)
+{
+	//a vector that contains a pair of (string and enum)
+	std::vector<std::pair<const char*, FactorioCalculations::Prototypes>> vector;
+
+	vector.push_back(std::pair<const char*, FactorioCalculations::Prototypes>("hmm", FactorioCalculations::Prototypes::ASSEMBLINGMACHINE));
+
+	using namespace rapidjson;
+
+	/*const Value& root = (*doc)["prototypes"];
+
+	for (auto& protos : root.GetArray())
+	{
+		for (auto& thing : protos["items"].GetArray())
+		{
+			if (FactorioCalculations::getTab(thing["tab"].GetString()) == tab)
+			{
+				vector.push_back(std::pair<const char*, FactorioCalculations::Prototypes>(thing["name"].GetString(),
+					FactorioCalculations::getPrototype(protos["prototype"].GetString())));
+			}
+		}
+	}*/
+	return vector;
 }
 
 
