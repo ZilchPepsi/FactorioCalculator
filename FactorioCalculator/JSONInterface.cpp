@@ -66,23 +66,21 @@ const std::vector<std::pair<const char*, FactorioCalculations::Prototypes>> JSON
 	//a vector that contains a pair of (string and enum)
 	std::vector<std::pair<const char*, FactorioCalculations::Prototypes>> vector;
 
-	vector.push_back(std::pair<const char*, FactorioCalculations::Prototypes>("hmm", FactorioCalculations::Prototypes::ASSEMBLINGMACHINE));
-
 	using namespace rapidjson;
 
-	/*const Value& root = (*doc)["prototypes"];
+	const Value& root = (*doc)["prototypes"];
 
 	for (auto& protos : root.GetArray())
 	{
 		for (auto& thing : protos["items"].GetArray())
 		{
-			if (FactorioCalculations::getTab(thing["tab"].GetString()) == tab)
+			if (thing.HasMember("tab") && FactorioCalculations::getTab(thing["tab"].GetString()) == tab)
 			{
 				vector.push_back(std::pair<const char*, FactorioCalculations::Prototypes>(thing["name"].GetString(),
 					FactorioCalculations::getPrototype(protos["prototype"].GetString())));
 			}
 		}
-	}*/
+	}
 	return vector;
 }
 
