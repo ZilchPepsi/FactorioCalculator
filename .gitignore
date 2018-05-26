@@ -3,5 +3,7 @@ node_modules
 FactorioCalculator/Debug/
 Debug/
 Release/
-x64
+x64/
 FactorioCalculator/*.aps
+FactorioCalculator/x64/
+FactorioCalculator/Debug/
