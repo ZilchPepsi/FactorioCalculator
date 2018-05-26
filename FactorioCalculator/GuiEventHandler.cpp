@@ -44,94 +44,83 @@ std::wstring GuiEventHandler::btn_click_reset()
 
 std::wstring GuiEventHandler::rbtn_click_log()
 {
-	/*
-	TODO
-	*/
 	const std::vector<std::pair<const char*, FactorioCalculations::Prototypes>> vec = calc.getTab(FactorioCalculations::Tabs::LOGISTICS);
-
-	std::wstring retval = L"";
+	
 	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+	output_items.clear();
 
 	for (std::pair<const char*, FactorioCalculations::Prototypes> pair : vec)
 	{
-
+		std::wstring retval = L"";
 		const char*  x = pair.first;
 		retval += converter.from_bytes(x);
-		
-		retval += WIN_RTN;
-	}
 
-	return retval;
+		output_items.push_back(retval);
+	}
+	
+	return L"rbtn_click_log success";
 	//return L"rbtn_click_log";
 }
 
 std::wstring GuiEventHandler::rbtn_click_prd()
 {
-	/*
-	TODO
-	*/
 	const std::vector<std::pair<const char*, FactorioCalculations::Prototypes>> vec = calc.getTab(FactorioCalculations::Tabs::PRODUCTION);
+	output_items.clear();
 
-	std::wstring retval = L"";
 	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 
 	for (std::pair<const char*, FactorioCalculations::Prototypes> pair : vec)
 	{
-
+		std::wstring retval = L"";
 		const char*  x = pair.first;
 		retval += converter.from_bytes(x);
 
-		retval += WIN_RTN;
+		output_items.push_back(retval);
 	}
 
-	return retval;
+	return L"rbtn_click_prd success";
 	//return L"rbtn_click_prd";
 }
 
 std::wstring GuiEventHandler::rbtn_click_int()
 {
-	/*
-	TODO
-	*/
-
 	const std::vector<std::pair<const char*, FactorioCalculations::Prototypes>> vec = calc.getTab(FactorioCalculations::Tabs::INTERMEDIATEPRODUCTS);
 
-	std::wstring retval = L"";
+	output_items.clear();
+
 	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 
 	for (std::pair<const char*, FactorioCalculations::Prototypes> pair : vec)
 	{
-
+		std::wstring retval = L"";
 		const char*  x = pair.first;
 		retval += converter.from_bytes(x);
 
-		retval += WIN_RTN;
+		output_items.push_back(retval);
 	}
 
-	return retval;
+	return L"rbtn_click_int success";
 	//return L"rbtn_click_int";
 }
 
 std::wstring GuiEventHandler::rbtn_click_cbt()
 {
-	/*
-	TODO
-	*/
 	const std::vector<std::pair<const char*, FactorioCalculations::Prototypes>> vec = calc.getTab(FactorioCalculations::Tabs::COMBAT);
 
-	std::wstring retval = L"";
+	output_items.clear();
+
 	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 
 	for (std::pair<const char*, FactorioCalculations::Prototypes> pair : vec)
 	{
-
+		std::wstring retval = L"";
 		const char*  x = pair.first;
 		retval += converter.from_bytes(x);
 
-		retval += WIN_RTN;
+		output_items.push_back(retval);
 	}
 
-	return retval;
+	return L"rbtn_click_cbt success";
 	//return L"rbtn_click_cbt";
 }
 
