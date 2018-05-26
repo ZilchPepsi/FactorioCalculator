@@ -1,13 +1,13 @@
 {
-"name":"FactorioCalculator",
-"version":"0.0.1",
-"license":"MIT",
-"description":"This is a Factorio utility for calculating the required setup for producing something at a given rate",
-"repository":{
-	"type": "git",
-	"url": "https://github.com/caominhim/FactorioCalculator.git"
+	"name": "FactorioCalculator",
+	"version": "0.0.1",
+	"license": "MIT",
+	"description": "This is a Factorio utility for calculating the required setup for producing something at a given rate",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/caominhim/FactorioCalculator.git"
 	},
-"dependencies":{
-		"rapidjson":"git://github.com/Tencent/rapidjson.git"
+	"dependencies": {
+		"rapidjson": "git://github.com/Tencent/rapidjson.git"
 	}
 }
