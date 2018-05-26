@@ -43,9 +43,9 @@ JSONInterface::~JSONInterface()
 	delete doc;
 }
 
-const std::map<const char*, FactorioCalculations::Prototypes>* JSONInterface::getTabs()
+const std::map<const char*, FactorioCalculations::Tabs>* JSONInterface::getTabs()
 {
-	std::map<const char*, FactorioCalculations::Prototypes>* map = new std::map<const char*, FactorioCalculations::Prototypes>;
+	std::map<const char*, FactorioCalculations::Tabs>* map = new std::map<const char*, FactorioCalculations::Tabs>;
 
 	using namespace rapidjson;
 
@@ -55,11 +55,33 @@ const std::map<const char*, FactorioCalculations::Prototypes>* JSONInterface::ge
 	{
 		for (auto& thing : protos["items"].GetArray())
 		{
-			map->insert(std::pair<const char*, FactorioCalculations::Prototypes>(thing["name"].GetString(), FactorioCalculations::getPrototype(protos["prototype"].GetString())));
+			map->insert(std::pair<const char*, FactorioCalculations::Tabs>(thing["name"].GetString(), FactorioCalculations::getTab(thing["tab"].GetString())));
 		}
 	}
 
 	return map;
+}
+const std::vector<std::pair<const char*, FactorioCalculations::Prototypes>> JSONInterface::getTab(FactorioCalculations::Tabs tab)
+{
+	//a vector that contains a pair of (string and enum)
+	std::vector<std::pair<const char*, FactorioCalculations::Prototypes>> vector;
+
+	using namespace rapidjson;
+
+	const Value& root = (*doc)["prototypes"];
+
+	for (auto& protos : root.GetArray())
+	{
+		for (auto& thing : protos["items"].GetArray())
+		{
+			if (thing.HasMember("tab") && FactorioCalculations::getTab(thing["tab"].GetString()) == tab)
+			{
+				vector.push_back(std::pair<const char*, FactorioCalculations::Prototypes>(thing["name"].GetString(),
+					FactorioCalculations::getPrototype(protos["prototype"].GetString())));
+			}
+		}
+	}
+	return vector;
 }
 
 

@@ -57,6 +57,33 @@ namespace FactorioCalculations {
 		"cBOILER"
 	};
 
+	enum Tabs {
+		LOGISTICS,
+		PRODUCTION,
+		INTERMEDIATEPRODUCTS,
+		COMBAT
+	};
+
+	static const char* Tabs_strings[] = {
+		"LOGISTICS",
+		"PRODUCTION",
+		"INTERMEDIATEPRODUCTS",
+		"COMBAT"
+	};
+
+	static Tabs getTab(const char* s)
+	{
+		for (int x = 0; x < 4; x++)
+		{
+			if (!strcmp(s, Tabs_strings[x]))
+				return (Tabs)x;
+		}
+		//if you reach this then the tab doesn't exist
+		assert(false);
+		return Tabs::LOGISTICS;
+	}
+
+
 	/*	
 		returns the enum equivalent of a const string
 		@param const char* the string to check

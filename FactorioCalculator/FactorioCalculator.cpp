@@ -94,11 +94,13 @@ std::wstring FactorioCalculator::printToString(FactorioCalculator::FactorySetup&
 	return retval;
 }
 
-const std::map<const char*, FactorioCalculations::Prototypes>* FactorioCalculator::getTabs()
+const std::map<const char*, FactorioCalculations::Tabs>* FactorioCalculator::getTabs()
 {
 	return jsonInterface.getTabs();
-
-
+}
+const std::vector<std::pair<const char*, FactorioCalculations::Prototypes>> FactorioCalculator::getTab(FactorioCalculations::Tabs tab)
+{
+	return jsonInterface.getTab(tab);
 }
 
 
