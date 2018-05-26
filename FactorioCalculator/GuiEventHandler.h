@@ -16,7 +16,7 @@ class GuiEventHandler
 		std::wstring init();
 		std::wstring destroy();
 
-		std::wstring btn_click_calculate();
+		std::wstring btn_click_calculate(int i, char * rate);
 		std::wstring btn_click_reset();
 		
 		std::wstring rbtn_click_log();
@@ -40,5 +40,6 @@ class GuiEventHandler
 
 		std::vector<struct FactorioCalculator::FactorySetup*> factory;
 		FactorioCalculator calc;
+
 };
 

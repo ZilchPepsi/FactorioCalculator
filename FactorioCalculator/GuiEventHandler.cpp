@@ -26,12 +26,11 @@ std::wstring GuiEventHandler::destroy()
 	return L"handler destroy";
 }
 
-std::wstring GuiEventHandler::btn_click_calculate()
+std::wstring GuiEventHandler::btn_click_calculate(int i, char * rate)
 {
-	/* 
-		TODO
-	*/
-	calc.calculateFactorySetup("Iron Plate", 5, factory);
+	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+	std::string item = converter.to_bytes(output_items[i]);
+	calc.calculateFactorySetup(item.c_str(), std::stod(rate), factory);
 	return parseCalcToString();
 }
 std::wstring GuiEventHandler::btn_click_reset()
