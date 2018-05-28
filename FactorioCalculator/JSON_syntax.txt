@@ -26,7 +26,8 @@
 					"tab":"match case FactorioCalculations::Tabs_strings[]"
 					<!--only place the following if craftMethod is cCRAFT-->
 					"craftTime":"base craft time from wiki  <double>",
-					"craftSpeed":"only used in crafting machines ex. Assembler 1 / oil refinery <double>"
+					"craftSpeed":"only used in crafting machines ex: Assembler 1 / oil refinery <double>"
+					"outputCount": "only used if not 1 ex: copper wire <integer>"
 				}
 			]
 		}
