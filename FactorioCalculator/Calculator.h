@@ -25,7 +25,8 @@ namespace FactorioCalculations {
 		MINING_DRILL,
 		FURNACE,
 		PROCESS,
-		TOOL
+		TOOL,
+		PIPE
 	};
 
 	static const char* Prototype_strings[] = {
@@ -36,7 +37,8 @@ namespace FactorioCalculations {
 		"MINING_DRILL",
 		"FURNACE",
 		"PROCESS",
-		"TOOL"
+		"TOOL",
+		"PIPE"
 	};
 
 	enum CraftMethods {
@@ -123,7 +125,18 @@ namespace FactorioCalculations {
 
 		const char* name;
 		Prototypes prototype;
+		CraftMethods craftMethod;
 		std::map<const char*, const char*> extras;
+	};
+
+	struct Pipe : Element {
+		int storageSize;
+	};
+
+	struct Process : Element {
+		std::vector<Ingredient*> inputs;
+		std::vector<Ingredient*> outputs;
+		double craftTime;
 	};
 
 	struct Ingredient {
@@ -139,8 +152,6 @@ namespace FactorioCalculations {
 		double miningTime;
 	};
 	struct Item : Element {
-
-		CraftMethods craftMethod;
 		double craftTime;
 		std::vector<Ingredient*> ingredients;
 

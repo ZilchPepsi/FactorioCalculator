@@ -16,16 +16,15 @@ namespace json {
 		void importJSON(const char*);
 		rapidjson::Document* doc;
 
-		struct FactorioCalculations::Resource* makeResource(rapidjson::Value&);
-		struct FactorioCalculations::Miner* makeMiner(rapidjson::Value&);
-		struct FactorioCalculations::Item* makeItem(rapidjson::Value&);
-		struct FactorioCalculations::Furnace* makeFurnace(rapidjson::Value&);
+		struct FactorioCalculations::Resource*	makeResource(rapidjson::Value&);
+		struct FactorioCalculations::Miner*		makeMiner(rapidjson::Value&);
+		struct FactorioCalculations::Item*		makeItem(rapidjson::Value&);
+		struct FactorioCalculations::Furnace*	makeFurnace(rapidjson::Value&);
 		struct FactorioCalculations::Assembler* makeAssemblingMachine(rapidjson::Value&);
-		struct FactorioCalculations::Tool* makeTool(rapidjson::Value&);
-
-		/*struct FactorioCalculations::Resource makeFluid(rapidjson::Value&);
-		struct FactorioCalculations::Resource makeAssemblingMachine(rapidjson::Value&);
-		struct FactorioCalculations::Resource makeProcess(rapidjson::Value&);*/
+		struct FactorioCalculations::Tool*		makeTool(rapidjson::Value&);
+		struct FactorioCalculations::Fluid*		makeFluid(rapidjson::Value&);
+		struct FactorioCalculations::Process*	makeProcess(rapidjson::Value&);
+		struct FactorioCalculations::Pipe*		makePipe(rapidjson::Value&);
 
 	public:
 		JSONInterface();

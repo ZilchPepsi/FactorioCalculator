@@ -108,6 +108,9 @@ const struct FactorioCalculations::Element* JSONInterface::getValue(const char* 
 				case Prototypes::FURNACE:			return makeFurnace((rapidjson::Value&)thing);
 				case Prototypes::ASSEMBLINGMACHINE: return makeAssemblingMachine((rapidjson::Value&)thing);
 				case Prototypes::TOOL:				return makeTool((rapidjson::Value&)thing);
+				case Prototypes::FLUID:				return makeFluid((rapidjson::Value&)thing);
+				case Prototypes::PROCESS:			return makeProcess((rapidjson::Value&)thing);
+				case Prototypes::PIPE:				return makePipe((rapidjson::Value&)thing);
 				}
 				//if you got here, then the prototype is not recognized or the switch doesn't have that prototype yet
 				assert(false);
@@ -144,6 +147,9 @@ const struct FactorioCalculations::Element* JSONInterface::getValueWithHint(cons
 					case Prototypes::FURNACE:			return makeFurnace((rapidjson::Value&)thing);
 					case Prototypes::ASSEMBLINGMACHINE: return makeAssemblingMachine((rapidjson::Value&)thing);
 					case Prototypes::TOOL:				return makeTool((rapidjson::Value&)thing);
+					case Prototypes::FLUID:				return makeFluid((rapidjson::Value&)thing);
+					case Prototypes::PROCESS:			return makeProcess((rapidjson::Value&)thing);
+					case Prototypes::PIPE:				return makePipe((rapidjson::Value&)thing);
 						//TODO fill out this as above
 					}
 					//if you got here, then the prototype is not recognized
@@ -158,6 +164,48 @@ const struct FactorioCalculations::Element* JSONInterface::getValueWithHint(cons
 	return NULL;
 }
 
+
+struct FactorioCalculations::Pipe* JSONInterface::makePipe(rapidjson::Value& val)
+{
+	FactorioCalculations::Pipe*	p = new FactorioCalculations::Pipe;
+
+	p->prototype = FactorioCalculations::Prototypes::PIPE;
+	p->name = val["name"].GetString();
+
+	p->storageSize = val["storageSize"].GetDouble();
+
+	return p;
+}
+
+struct FactorioCalculations::Process* JSONInterface::makeProcess(rapidjson::Value& val)
+{
+	FactorioCalculations::Process* p = new FactorioCalculations::Process;
+
+	p->prototype = FactorioCalculations::Prototypes::PROCESS;
+	p->name = val["name"].GetString();
+
+	for (rapidjson::Value& v : val["inputs"].GetArray())
+	{
+		FactorioCalculations::Ingredient* e = new FactorioCalculations::Ingredient;
+		e->name = v["name"].GetString();
+		e->prototype = v["prototype"].GetString();
+		e->count = v["count"].GetInt();
+		p->inputs.push_back(e);
+	}
+	for (rapidjson::Value& v : val["outputs"].GetArray())
+	{
+		FactorioCalculations::Ingredient* e = new FactorioCalculations::Ingredient;
+		e->name = v["name"].GetString();
+		e->prototype = v["prototype"].GetString();
+		e->count = v["count"].GetInt();
+		p->inputs.push_back(e);
+	}
+
+	p->craftTime = val["craftTime"].GetDouble();
+
+	return p;
+}
+
 struct FactorioCalculations::Resource* JSONInterface::makeResource(rapidjson::Value& val)
 {
 	FactorioCalculations::Resource* r = new FactorioCalculations::Resource;
@@ -168,6 +216,21 @@ struct FactorioCalculations::Resource* JSONInterface::makeResource(rapidjson::Va
 
 	return r;
 }
+
+struct FactorioCalculations::Fluid* JSONInterface::makeFluid(rapidjson::Value& val)
+{
+	FactorioCalculations::Fluid* f = new FactorioCalculations::Fluid();
+
+	f->prototype = FactorioCalculations::Prototypes::FLUID;
+	f->name = val["name"].GetString();
+	if (val.HasMember("craftMethod"))
+		f->craftMethod = FactorioCalculations::getCraftMethod(val["craftMethod"].GetString());
+	else
+		f->craftMethod = FactorioCalculations::CraftMethods::cCRAFT;
+
+	return f;
+}
+
 
 struct FactorioCalculations::Miner* JSONInterface::makeMiner(rapidjson::Value& val)
 {

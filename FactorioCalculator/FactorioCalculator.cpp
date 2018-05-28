@@ -117,17 +117,15 @@ void FactorioCalculator::calculateFactorySetup(const char* element, double rate,
 	//some prototypes need to be broken down more, some don't
 	switch (el->prototype)
 	{
-	case Prototypes::RESOURCE:
-		calculateResource(el, rate, factorySetup);
+	case Prototypes::RESOURCE:			calculateResource(el, rate, factorySetup);
 		break;
-	case Prototypes::ITEM:
-		calculateItem(el, rate, factorySetup);
+	case Prototypes::ITEM:				calculateItem(el, rate, factorySetup);
 		break;
-	case Prototypes::ASSEMBLINGMACHINE:
-		calculateAssemblyMachine(el, rate, factorySetup);
-	case Prototypes::TOOL:
-		calculateTool(el, rate, factorySetup);
+	case Prototypes::ASSEMBLINGMACHINE:	calculateAssemblyMachine(el, rate, factorySetup);
 		break;
+	case Prototypes::TOOL:				calculateTool(el, rate, factorySetup);
+		break;
+
 	}
 }
 
@@ -136,8 +134,6 @@ void FactorioCalculator::calculateFactorySetup(const char* element, double rate,
 */
 void FactorioCalculator::calculateResource(const FactorioCalculations::Element* el, double rate, std::vector<FactorioCalculator::FactorySetup*>& factorySetup)
 {
-	//std::cout << "in RESOURCE with " << el->name << std::endl;
-
 	using namespace FactorioCalculations;
 
 	Resource* r = (Resource*)el;
@@ -237,10 +233,6 @@ void FactorioCalculator::calculateAssemblyMachine(const FactorioCalculations::El
 	asm1Time = getBuildSpeed(asm1, a);
 	asm2Time = getBuildSpeed(asm2, a);
 	asm3Time = getBuildSpeed(asm3, a);
-
-	std::cout << "asm1 rate: " << asm1Time << std::endl;
-	std::cout << "asm2 rate: " << asm2Time << std::endl;
-	std::cout << "asm3 rate: " << asm3Time << std::endl;
 
 	if (FactorySetup* fs = contains(factorySetup, el))
 	{
