@@ -1,0 +1,34 @@
+{
+	"prototypes":[
+		{
+			"prototype": "FROM_WIKI_ALL_CAPS",
+			"items":[
+				{
+					"name":"Name From Wiki First Letter Caps",
+					"requiredTech": "only use this field if not a base tech",
+					"produceReq":[
+						<!--use produceReq if cannot be made/mined by hand-->
+						<!--this is a list all machines that can create this product-->
+						{
+							"prototype":"the prototype of this item",
+							"name":"Name From Wiki First Letter Caps"
+						}
+					],
+					"ingredients:"[
+						<!--do not use if craftmethod cPROCESS-->
+						{
+							"prototype":"FROM_WIKI_ALL_CAPS",
+							"name":"Name From Wiki First Letter Caps",
+							"count":"input count <integer>"
+						}
+					]
+					"craftMethod":"match case FactorioCalculations::CraftMethods_strings[], do not use if cCRAFT",
+					"tab":"match case FactorioCalculations::Tabs_strings[]"
+					<!--only place the following if craftMethod is cCRAFT-->
+					"craftTime":"base craft time from wiki  <double>",
+					"craftSpeed":"only used in crafting machines ex. Assembler 1 / oil refinery <double>"
+				}
+			]
+		}
+	]
+}
