@@ -179,7 +179,238 @@
         }
       ]
     },
-
+    {
+      "prototype": "BOILER",
+      "items": [
+        {
+          "name": "Boiler",
+          "dimensionX": 3,
+          "dimensionY": 2,
+          "energyConsumption": 3600000,
+          "ingredients": [
+            {
+              "prototype": "PIPE",
+              "name": "Pipe",
+              "count": 4
+            },
+            {
+              "prototype": "FURNANCE",
+              "name": "Stone Furnance",
+              "count": 1
+            }
+          ],
+          "powerOutput": 1800000,
+          "efficiency": 0.5,
+          "powerType": "Liquid Heat",
+          "pollution": 27.6923,
+          "tab": "PRODUCTION"
+        },
+        {
+          "name": "Heat Exchanger",
+          "dimensionX": 3,
+          "dimensionY": 2,
+          "energyConsumption": 10000000,
+          "ingredients": [
+            {
+              "prototype": "PIPE",
+              "name": "Pipe",
+              "count": 10
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Copper Plate",
+              "count": 100
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Steel Plate",
+              "count": 10
+            }
+          ],
+          "powerOutput": 1800000,
+          "fluidProduction": 500,
+          "maxTemp": 1000,
+          "tab": "PRODUCTION"
+        }
+      ]
+    },
+    {
+      "prototype": "HEATEXCHANGER",
+      "items": [
+        {
+          "name": "Heat Exchanger",
+          "dimensionX": 1,
+          "dimensionY": 1,
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Copper Plate",
+              "count": 20
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Steel Plate",
+              "count": 10
+            }
+          ],
+          "maxTemp": 1000,
+          "tab": "PRODUCTION"
+        }
+      ]
+    },
+    {
+      "prototype": "GENERATOR",
+      "items": [
+        {
+          "name": "Steam Engine",
+          "dimensionX": 5,
+          "dimensionY": 3,
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Iron Gear Wheel",
+              "count": 8
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Iron Plate",
+              "count": 10
+            },
+            {
+              "prototype": "PIPE",
+              "name": "Pipe",
+              "count": 5
+            }
+          ],
+          "craftingTime": 0.5,
+          "powerOutput": 900000,
+          "maxTemp": 165,
+          "fluidConsumption": 30,
+          "tab": "PRODUCTION"
+        },
+        {
+          "name": "Steam Turbine",
+          "dimensionX": 5,
+          "dimensionY": 3,
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Iron Gear Wheel",
+              "count": 50
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Copper Plate",
+              "count": 50
+            },
+            {
+              "prototype": "PIPE",
+              "name": "Pipe",
+              "count": 20
+            }
+          ],
+          "craftingTime": 3.0,
+          "powerOutput": 5800000,
+          "maxTemp": 500,
+          "fluidConsumption": 60,
+          "tab": "PRODUCTION"
+        }
+      ]
+    },
+    {
+      "prototype": "SOLARPANEL",
+      "items": [
+        {
+          "name": "Solar Panel",
+          "dimensionX": 3,
+          "dimensionY": 3,
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Electronic Circuit",
+              "count": 15
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Copper Plate",
+              "count": 5
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Steel Plate",
+              "count": 5
+            }
+          ],
+          "craftingTime": 10.0,
+          "powerOutputMax": 60000,
+          "powerOutputAvg": 42000,
+          "tab": "PRODUCTION"
+        }
+      ]
+    },
+    {
+      "prototype": "ACCUMULATOR",
+      "items": [
+        {
+          "name": "Accumulator",
+          "dimensionX": 2,
+          "dimensionY": 2,
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Battery",
+              "count": 5
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Iron Plate",
+              "count": 2
+            }
+          ],
+          "craftingTime": 10.0,
+          "energyConsumption": 5000000,
+          "powerOutput": 300000,
+          "powerInput": 300000,
+          "tab": "PRODUCTION"
+        }
+      ]
+    },
+    {
+      "prototype": "REACTOR",
+      "items": [
+        {
+          "name": "Nuclear Reactor",
+          "dimensionX": 5,
+          "dimensionY": 5,
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Advanced Circuit",
+              "count": 500
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Concrete",
+              "count": 500
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Copper Plate",
+              "count": 500
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Steel Plate",
+              "count": 500
+            }
+          ],
+          "craftingTime": 8.0,
+          "energyConsumption": 40000000,
+          "maxTemp": 1000,
+          "tab": "PRODUCTION"
+        }
+      ]
+    },
     {
       "prototype": "ASSEMBLINGMACHINE",
       "items": [
@@ -288,7 +519,7 @@
               "count": 10
             },
             {
-              "prototype": "pipe",
+              "prototype": "PIPE",
               "name": "Pipe",
               "count": 10
             },
@@ -308,6 +539,140 @@
           "pollution": 3.6,
           "moduleSlots": 3,
           "requiredTech": "Oil Processing",
+          "tab": "PRODUCTION"
+        },
+        {
+          "name": "Chemical Plant",
+          "dimensionX": 3,
+          "dimensionY": 3,
+          "energyConsumption": 210000,
+          "energyDrain": 7000,
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Electronic Circuit",
+              "count": 5
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Iron Gear Wheel",
+              "count": 5
+            },
+            {
+              "prototype": "PIPE",
+              "name": "Pipe",
+              "count": 5
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Steel Plate",
+              "count": 5
+            }
+          ],
+          "craftTime": 5,
+          "craftSpeed": 1.25,
+          "pollution": 1.8,
+          "moduleSlots": 3,
+          "requiredTech": "Oil Processing",
+          "tab": "PRODUCTION"
+        },
+        {
+          "name": "Centrifuge",
+          "dimensionX": 3,
+          "dimensionY": 3,
+          "energyConsumption": 350000,
+          "energyDrain": 11000,
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Advanced Circuit",
+              "count": 100
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Iron Gear Wheel",
+              "count": 100
+            },
+            {
+              "prototype": "TILE",
+              "name": "Concrete",
+              "count": 100
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Steel Plate",
+              "count": 50
+            }
+          ],
+          "craftTime": 4,
+          "craftSpeed": 0.75,
+          "pollution": 5.6,
+          "moduleSlots": 2,
+          "requiredTech": "Nuclear Power",
+          "tab": "PRODUCTION"
+        }
+      ]
+    },
+    {
+      "prototype": "LAB",
+      "items": [
+        {
+          "name": "Lab",
+          "dimensionX": 3,
+          "dimensionY": 3,
+          "energyConsumption": 60000,
+          "energyDrain": 0,
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Electronic Circuit",
+              "count": 10
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Iron Gear Wheel",
+              "count": 10
+            },
+            {
+              "prototype": "TRANSPORTBELT",
+              "name": "Transport Belt",
+              "count": 4
+            }
+          ],
+          "craftTime": 2,
+          "craftSpeed": 1.0,
+          "pollution": 0,
+          "moduleSlots": 2,
+          "tab": "PRODUCTION"
+        }
+      ]
+    },
+    {
+      "prototype": "OFFSHOREPUMP",
+      "items": [
+        {
+          "name": "Offshore Pump",
+          "dimensionX": 2,
+          "dimensionY": 2,
+          "energyConsumption": 0,
+          "energyDrain": 0,
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Electronic Circuit",
+              "count": 2
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Iron Gear Wheel",
+              "count": 1
+            },
+            {
+              "prototype": "PIPE",
+              "name": "Pipe",
+              "count": 1
+            }
+          ],
           "tab": "PRODUCTION"
         }
       ]
@@ -647,6 +1012,72 @@
           "energyConsumption": 90000,
           "miningAreaX": 5,
           "miningAreaY": 5,
+          "pollution": 9.0,
+          "tab": "PRODUCTION"
+        },
+        {
+          "name": "Burner Mining Drill",
+          "ingredients": [
+            {
+              "prototype": "FURNANCE",
+              "name": "Stone Furnance",
+              "count": 1
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Iron Gear Wheel",
+              "count": 3
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Iron Plate",
+              "count": 3
+            }
+          ],
+          "craftTime": 2,
+          "miningPower": 2.5,
+          "miningSpeed": 0.35,
+          "dimensionX": 2,
+          "dimensionY": 2,
+          "energyConsumption": 300000,
+          "miningAreaX": 2,
+          "miningAreaY": 2,
+          "pollution": 10.0,
+          "tab": "PRODUCTION"
+        },
+        {
+          "name": "Pumpjack",
+          "ingredients": [
+            {
+              "prototype": "ITEM",
+              "name": "Electronic Circuit",
+              "count": 5
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Iron Gear Wheel",
+              "count": 10
+            },
+            {
+              "prototype": "ITEM",
+              "name": "Steel Plate",
+              "count": 5
+            },
+            {
+              "prototype": "PIPE",
+              "name": "Pipe",
+              "count": 10
+            }
+          ],
+          "craftTime": 5,
+          "miningPower": 2,
+          "miningSpeed": 1.0,
+          "dimensionX": 3,
+          "dimensionY": 3,
+          "energyConsumption": 90000,
+          "miningAreaX": 1,
+          "miningAreaY": 1,
+          "pollution": 9.0,
           "tab": "PRODUCTION"
         }
       ]
