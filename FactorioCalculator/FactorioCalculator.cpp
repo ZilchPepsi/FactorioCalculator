@@ -78,18 +78,28 @@ std::wstring FactorioCalculator::printToString(FactorioCalculator::FactorySetup&
 	retval += WIN_RTN;
 	retval += WIN_RTN;
 
-	retval += L"asm1: " + std::to_wstring(fs.asm1) + WIN_RTN;
-	retval += L"asm2: " + std::to_wstring(fs.asm2) + WIN_RTN;
-	retval += L"asm3: " + std::to_wstring(fs.asm3) + WIN_RTN + WIN_RTN;
+	if(fs.asm1!=0)
+		retval += L"asm1: " + std::to_wstring((int)std::ceil(fs.asm1)) + WIN_RTN;
+	if (fs.asm2 != 0)
+		retval += L"asm2: " + std::to_wstring((int)std::ceil(fs.asm2)) + WIN_RTN;
+	if (fs.asm3 != 0)
+		retval += L"asm3: " + std::to_wstring((int)std::ceil(fs.asm3)) + WIN_RTN + WIN_RTN;
 
-	retval += L"stoneFurnace: " + std::to_wstring(fs.stoneFurnace) + WIN_RTN;
-	retval += L"steelFurnace: " + std::to_wstring(fs.steelFurnace) + WIN_RTN;
-	retval += L"electricFurnace: " + std::to_wstring(fs.electricFurnace) + WIN_RTN + WIN_RTN;
+	if(fs.stoneFurnace!=0)
+		retval += L"stoneFurnace: " + std::to_wstring((int)std::ceil(fs.stoneFurnace)) + WIN_RTN;
+	if (fs.steelFurnace != 0)
+	retval += L"steelFurnace: " + std::to_wstring((int)std::ceil(fs.steelFurnace)) + WIN_RTN;
+	if (fs.electricFurnace != 0)
+	retval += L"electricFurnace: " + std::to_wstring((int)std::ceil(fs.electricFurnace)) + WIN_RTN + WIN_RTN;
 
-	retval += L"miners: " + std::to_wstring(fs.miners) + WIN_RTN;
-	retval += L"pumpjacks: " + std::to_wstring(fs.pumpjacks) + WIN_RTN;
-	retval += L"chemical plants: " + std::to_wstring(fs.chemicalPlants) + WIN_RTN;
-	retval += L"refineries: " + std::to_wstring(fs.refineries) + WIN_RTN;
+	if(fs.miners!=0)
+		retval += L"miners: " + std::to_wstring((int)std::ceil(fs.miners)) + WIN_RTN;
+	if (fs.pumpjacks != 0)
+		retval += L"pumpjacks: " + std::to_wstring((int)std::ceil(fs.pumpjacks)) + WIN_RTN;
+	if (fs.chemicalPlants != 0)
+		retval += L"chemical plants: " + std::to_wstring((int)std::ceil(fs.chemicalPlants)) + WIN_RTN;
+	if (fs.refineries != 0)
+		retval += L"refineries: " + std::to_wstring((int)std::ceil(fs.refineries)) + WIN_RTN;
 
 	return retval;
 }
