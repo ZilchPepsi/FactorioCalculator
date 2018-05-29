@@ -1,0 +1,8 @@
+FactorioCalculator::calculateFactorySetup()
+{
+	get item from JSONInterface::getValue()
+	switch on item.prototype
+	{
+		calculate Resource/item/assemblymachine/tool/...
+	}
+}

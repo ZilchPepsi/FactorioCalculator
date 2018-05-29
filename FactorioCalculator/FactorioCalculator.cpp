@@ -125,9 +125,18 @@ void FactorioCalculator::calculateFactorySetup(const char* element, double rate,
 		break;
 	case Prototypes::TOOL:				calculateTool(el, rate, factorySetup);
 		break;
+	case Prototypes::FURNACE:			calculateFurnace(el, rate, factorySetup);
 
 	}
 }
+
+
+
+void FactorioCalculator::calculateFurnace(const FactorioCalculations::Element* el, double rate, std::vector<FactorySetup*>& factorySetup)
+{
+	baseCalculateItem((FactorioCalculations::Item*)el, rate, factorySetup);
+}
+
 
 /*
 	given a resource, will calculate the factory
@@ -161,9 +170,26 @@ void FactorioCalculator::calculateResource(const FactorioCalculations::Element* 
 }
 
 void FactorioCalculator::calculateItem(const FactorioCalculations::Element* el, double rate, std::vector<FactorioCalculator::FactorySetup*>& factorySetup)
+{	
+	baseCalculateItem((FactorioCalculations::Item*)el, rate, factorySetup);
+}
+
+void FactorioCalculator::calculateAssemblyMachine(const FactorioCalculations::Element* el, double rate, std::vector<FactorySetup*>& factorySetup)
+{
+	baseCalculateItem((FactorioCalculations::Item*)el, rate, factorySetup);
+}
+
+void FactorioCalculator::calculateTool(const FactorioCalculations::Element* el, double rate, std::vector<FactorySetup*>& factorySetup)
+{
+	baseCalculateItem((FactorioCalculations::Item*)el, rate, factorySetup);
+}
+
+/*
+	given an item, calculate number of assemblers / furnaces required to produce it at rate
+*/
+void FactorioCalculator::baseCalculateItem(const FactorioCalculations::Item* i, double rate, std::vector<FactorySetup*>& factorySetup)
 {
 	using namespace FactorioCalculations;
-	Item* i = (Item*)el;
 
 	switch (i->craftMethod)
 	{
@@ -173,7 +199,7 @@ void FactorioCalculator::calculateItem(const FactorioCalculations::Element* el, 
 		asm2Time = getBuildSpeed(asm2, i);
 		asm3Time = getBuildSpeed(asm3, i);
 
-		if (FactorySetup* fs = contains(factorySetup, el))
+		if (FactorySetup* fs = contains(factorySetup, i))
 		{
 			fs->asm1 += rate / asm1Time;
 			fs->asm2 += rate / asm2Time;
@@ -182,7 +208,7 @@ void FactorioCalculator::calculateItem(const FactorioCalculations::Element* el, 
 		else
 		{
 			fs = new FactorySetup();
-			fs->element = el;
+			fs->element = i;
 			fs->asm1 = rate / asm1Time;
 			fs->asm2 = rate / asm2Time;
 			fs->asm3 = rate / asm3Time;
@@ -196,7 +222,7 @@ void FactorioCalculator::calculateItem(const FactorioCalculations::Element* el, 
 		steelFurnaceTime = getBuildSpeed(steelFurnace, i);
 		electricFurnaceTime = getBuildSpeed(electricFurnace, i);
 
-		if (FactorySetup* fs = contains(factorySetup, el))
+		if (FactorySetup* fs = contains(factorySetup, i))
 		{
 			fs->stoneFurnace += rate / stoneFurnaceTime;
 			fs->steelFurnace += rate / steelFurnaceTime;
@@ -206,7 +232,7 @@ void FactorioCalculator::calculateItem(const FactorioCalculations::Element* el, 
 		{
 			fs = new FactorySetup();
 
-			fs->element = el;
+			fs->element = i;
 			fs->stoneFurnace = rate / stoneFurnaceTime;
 			fs->steelFurnace = rate / steelFurnaceTime;
 			fs->electricFurnace = rate / electricFurnaceTime;
@@ -216,48 +242,8 @@ void FactorioCalculator::calculateItem(const FactorioCalculations::Element* el, 
 
 		break;
 	}
-	//std::cout << "finished " << i->name << "...working on " << i->ingredients.size() << " ingredients" << std::endl;
 	for (Ingredient* ing : i->ingredients)
 	{
 		calculateFactorySetup(ing->name, rate*ing->count, factorySetup);
 	}
-	//std::cout << "finished " << i->name << " ingredients, now " << factorySetup.size() << " items in factorySetup" << std::endl;
-
-}
-
-void FactorioCalculator::calculateAssemblyMachine(const FactorioCalculations::Element* el, double rate, std::vector<FactorySetup*>& factorySetup)
-{
-	using namespace FactorioCalculations;
-	Assembler* a = (Assembler*)el;
-
-	asm1Time = getBuildSpeed(asm1, a);
-	asm2Time = getBuildSpeed(asm2, a);
-	asm3Time = getBuildSpeed(asm3, a);
-
-	if (FactorySetup* fs = contains(factorySetup, el))
-	{
-		fs->asm1 += rate / asm1Time;
-		fs->asm2 += rate / asm2Time;
-		fs->asm3 += rate / asm3Time;
-	}
-	else
-	{
-		fs = new FactorySetup();
-		fs->element = el;
-		fs->asm1 = rate / asm1Time;
-		fs->asm2 = rate / asm2Time;
-		fs->asm3 = rate / asm3Time;
-
-		factorySetup.push_back(fs);
-	}
-
-	for (Ingredient* ing : a->ingredients)
-	{
-		calculateFactorySetup(ing->name, rate*ing->count, factorySetup);
-	}
-}
-
-void FactorioCalculator::calculateTool(const FactorioCalculations::Element* el, double rate, std::vector<FactorySetup*>& factorySetup)
-{
-	calculateItem(el, rate, factorySetup);
 }

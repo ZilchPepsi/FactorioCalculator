@@ -68,5 +68,8 @@
     <Text Include="JSON_syntax.txt">
       <Filter>Source Files</Filter>
     </Text>
+    <Text Include="controlFlow.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

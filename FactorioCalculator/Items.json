@@ -235,30 +235,6 @@
       ]
     },
     {
-      "prototype": "HEATEXCHANGER",
-      "items": [
-        {
-          "name": "Heat Exchanger",
-          "dimensionX": 1,
-          "dimensionY": 1,
-          "ingredients": [
-            {
-              "prototype": "ITEM",
-              "name": "Copper Plate",
-              "count": 20
-            },
-            {
-              "prototype": "ITEM",
-              "name": "Steel Plate",
-              "count": 10
-            }
-          ],
-          "maxTemp": 1000,
-          "tab": "PRODUCTION"
-        }
-      ]
-    },
-    {
       "prototype": "GENERATOR",
       "items": [
         {

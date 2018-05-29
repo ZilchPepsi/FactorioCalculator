@@ -121,6 +121,13 @@ namespace FactorioCalculations {
 	////END prototypes
 	/////////////////////////////////////////////////////////
 
+	struct Ingredient {
+		const char* name;
+		const char* prototype;
+		int count;
+	};
+
+
 	struct Element {
 
 		const char* name;
@@ -137,12 +144,6 @@ namespace FactorioCalculations {
 		std::vector<Ingredient*> inputs;
 		std::vector<Ingredient*> outputs;
 		double craftTime;
-	};
-
-	struct Ingredient {
-		const char* name;
-		const char* prototype;
-		int count;
 	};
 
 
@@ -197,7 +198,7 @@ namespace FactorioCalculations {
 	/*
 		returns the  rate (resources/sec) at which a resource is mined using a miner
 	*/
-	static double getMiningSpeed(Miner* m, Resource* r)
+	static inline double getMiningSpeed(Miner* m, Resource* r)
 	{
 		return (m->miningPower - r->miningHardness) * (m->miningSpeed / r->miningTime);
 	}
@@ -206,15 +207,15 @@ namespace FactorioCalculations {
 	/*
 	returns the rate (res / sec) at which a resource is manufactured using an assembly machine or furnace
 	*/
-	static double getBuildSpeed(double craftingTime, double craftingSpeed)
+	static inline double getBuildSpeed(double craftingTime, double craftingSpeed)
 	{
 		return 1/(craftingTime / craftingSpeed);
 	}
-	static double getBuildSpeed(Furnace* f, Item* i)
+	static inline double getBuildSpeed(const Furnace* f, const Item* i)
 	{
 		return 1/(i->craftTime / f->craftSpeed);
 	}
-	static double getBuildSpeed(Assembler* a, Item* i)
+	static inline double getBuildSpeed(const Assembler* a, const Item* i)
 	{
 		return 1/(i->craftTime / a->craftSpeed);
 	}

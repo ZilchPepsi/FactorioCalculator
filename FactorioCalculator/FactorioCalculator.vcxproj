@@ -175,6 +175,7 @@
     <None Include="Items.json" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="controlFlow.txt" />
     <Text Include="JSON_syntax.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

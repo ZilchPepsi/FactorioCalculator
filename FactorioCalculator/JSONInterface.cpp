@@ -172,7 +172,7 @@ struct FactorioCalculations::Pipe* JSONInterface::makePipe(rapidjson::Value& val
 	p->prototype = FactorioCalculations::Prototypes::PIPE;
 	p->name = val["name"].GetString();
 
-	p->storageSize = val["storageSize"].GetDouble();
+	p->storageSize = val["storageSize"].GetInt();
 
 	return p;
 }
