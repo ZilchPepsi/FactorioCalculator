@@ -36,10 +36,16 @@ namespace json {
 		*/
 		const struct FactorioCalculations::Element* getValue(const char*);
 		const struct FactorioCalculations::Element* getValueWithHint(const char* name , const char* prototype);
+		
+
 		const std::map<const char*, FactorioCalculations::Tabs>* getTabs();
 		const std::vector<std::pair<const char*, FactorioCalculations::Prototypes>> getTab(FactorioCalculations::Tabs);
 
 		void init(const char*);
+
+		const std::vector<const FactorioCalculations::Process*> getProcessesThatMake(const FactorioCalculations::Element*);
+
+
 
 		/*
 		checks if a given value exists

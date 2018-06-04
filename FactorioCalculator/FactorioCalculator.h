@@ -67,6 +67,7 @@ private:
 	void calculateAssemblyMachine(const FactorioCalculations::Element*, double, std::vector<FactorySetup*>&);
 	void calculateTool(const FactorioCalculations::Element*, double, std::vector<FactorySetup*>&);
 	void calculateFurnace(const FactorioCalculations::Element*, double, std::vector<FactorySetup*>&);
+	void calculateProcess(const FactorioCalculations::Item*, double, std::vector<FactorySetup*>&);
 
 	void baseCalculateItem(const FactorioCalculations::Item*, double, std::vector<FactorySetup*>&);
 };

@@ -140,10 +140,24 @@ namespace FactorioCalculations {
 		int storageSize;
 	};
 
+	struct Assembler : Element {
+
+		double craftTime;
+		std::vector<Ingredient*> ingredients;
+
+		int moduleSlots;
+		double craftSpeed;
+		double pollution;
+		int64_t energyConsumption;
+		int64_t energyDrain;
+	};
+
+
 	struct Process : Element {
 		std::vector<Ingredient*> inputs;
 		std::vector<Ingredient*> outputs;
 		double craftTime;
+		std::vector<const Assembler*> assemberOptions;
 	};
 
 
@@ -152,6 +166,7 @@ namespace FactorioCalculations {
 		double miningHardness;
 		double miningTime;
 	};
+
 	struct Item : Element {
 		double craftTime;
 		std::vector<Ingredient*> ingredients;
@@ -163,6 +178,7 @@ namespace FactorioCalculations {
 				delete i;
 			}
 		}
+		std::vector<const Assembler*> assemblerOptions;
 	};
 	
 	struct Fluid : Element {
@@ -182,15 +198,6 @@ namespace FactorioCalculations {
 		double craftSpeed;
 		double pollution;
 	};
-	struct Assembler : Item {
-
-		int moduleSlots;
-		double craftSpeed;
-		double pollution;
-		int64_t energyConsumption;
-		int64_t energyDrain;
-	};
-
 	struct Tool : Item {
 
 	};
@@ -220,6 +227,5 @@ namespace FactorioCalculations {
 		return 1/(i->craftTime / a->craftSpeed);
 	}
 }
-
 
 #endif

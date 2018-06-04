@@ -43,6 +43,35 @@ JSONInterface::~JSONInterface()
 	delete doc;
 }
 
+const std::vector<const FactorioCalculations::Process*> JSONInterface::getProcessesThatMake(const FactorioCalculations::Element* el)
+{
+	std::vector<const FactorioCalculations::Process*> processes;
+
+	using namespace rapidjson;
+	const Value& root = (*doc)["prototypes"];
+
+	for (auto& prototype : root.GetArray())
+	{
+		if (!strcmp(prototype["prototype"].GetString(), FactorioCalculations::Prototype_strings[FactorioCalculations::Prototypes::PROCESS]))
+		{
+			for (auto& process : prototype["items"].GetArray())
+			{
+				for (auto& outputs : process["outputs"].GetArray())
+				{
+					if (!strcmp(outputs["name"].GetString(), el->name))
+					{
+						processes.push_back(makeProcess((Value&)process));
+						break;
+					}
+				}
+			}
+		}
+	}
+
+	return processes;
+}
+
+
 const std::map<const char*, FactorioCalculations::Tabs>* JSONInterface::getTabs()
 {
 	std::map<const char*, FactorioCalculations::Tabs>* map = new std::map<const char*, FactorioCalculations::Tabs>;
@@ -201,6 +230,13 @@ struct FactorioCalculations::Process* JSONInterface::makeProcess(rapidjson::Valu
 		p->inputs.push_back(e);
 	}
 
+	for (rapidjson::Value& v : val["produceReq"].GetArray())
+	{
+		p->assemberOptions.push_back((FactorioCalculations::Assembler*)getValueWithHint(v["name"].GetString(),
+			FactorioCalculations::Prototype_strings[FactorioCalculations::Prototypes::ASSEMBLINGMACHINE]));
+	}
+	
+
 	p->craftTime = val["craftTime"].GetDouble();
 
 	return p;
@@ -261,11 +297,20 @@ struct FactorioCalculations::Item* JSONInterface::makeItem(rapidjson::Value& val
 		e->count = v["count"].GetInt();
 		i->ingredients.push_back(e);
 	}
-	i->craftTime = val["craftTime"].GetDouble();
 	if (val.HasMember("craftMethod"))
 		i->craftMethod = FactorioCalculations::getCraftMethod(val["craftMethod"].GetString());
 	else
 		i->craftMethod = FactorioCalculations::CraftMethods::cCRAFT;
+
+	if (i->craftMethod != FactorioCalculations::CraftMethods::cPROCESS)
+		i->craftTime = val["craftTime"].GetDouble();
+	else
+		i->craftTime = -1;
+
+	if (val.HasMember("produceReq"))
+	{
+
+	}
 
 	return i;
 }

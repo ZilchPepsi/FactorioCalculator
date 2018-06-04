@@ -697,9 +697,13 @@
         },
         {
           "name": "Solid Fuel",
-          "ingredients": [
+          "produceReq": [
+            {
+              "prototype": "ASSEMBLINGMACHINE",
+              "name": "Chemical Plant"
+            }
           ],
-          "craftTime": 2.0,
+          "requiredTech": "Oil Processing",
           "craftMethod": "cPROCESS",
           "tab": "INTERMEDIATEPRODUCTS"
         },
@@ -718,38 +722,26 @@
         },
         {
           "name": "Plastic Bar",
-          "ingredients": [
+          "produceReq": [
             {
-              "prototype": "RESOURCE",
-              "name": "Coal",
-              "count": 1
-            },
-            {
-              "prototype": "FLUID",
-              "name": "Petroleum Gas",
-              "count": 20
+              "prototype": "ASSEMBLINGMACHINE",
+                "name": "Chemical Plant"
             }
           ],
-          "craftTime": 1.0,
           "craftMethod": "cPROCESS",
+          "requiredTech": "Plastics",
           "tab": "INTERMEDIATEPRODUCTS"
         },
         {
           "name": "Sulfur",
-          "ingredients": [
+           "produceReq": [
             {
-              "prototype": "FLUID",
-              "name": "Petroleum Gas",
-              "count": 30
-            },
-            {
-              "prototype": "FLUID",
-              "name": "Water",
-              "count": 30
+              "prototype": "ASSEMBLINGMACHINE",
+                "name": "Chemical Plant"
             }
           ],
-          "craftTime": 1.0,
           "craftMethod": "cPROCESS",
+          "requiredTech": "Sulfur Processing",
           "tab": "INTERMEDIATEPRODUCTS"
         },
         {
@@ -883,7 +875,7 @@
             },
             {
               "prototype": "ITEM",
-              "name": "Plastic",
+              "name": "Plastic Bar",
               "count": 2
             }
           ],
@@ -1211,6 +1203,35 @@
             }
           ],
           "craftTime": 5
+        },
+        {
+          "name": "Plastic Bar",
+          "inputs": [
+            {
+              "prototype": "RESOURCE",
+              "name": "Coal",
+              "count": 1
+            },
+            {
+              "prototype": "FLUID",
+              "name": "Petroleum Gas",
+              "count": 20
+            }
+          ],
+          "output": [
+            {
+              "prottoype": "ITEM",
+              "name": "Plastic Bar",
+              "count": 2
+            }
+          ],
+          "produceReq": [
+            {
+              "prototype": "ASSEMBLINGMACHINE",
+              "name": "Chemical Plant"
+            }
+          ],
+          "craftTime": 1
         }
       ]
     },

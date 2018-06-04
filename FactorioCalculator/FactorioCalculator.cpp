@@ -181,7 +181,10 @@ void FactorioCalculator::calculateResource(const FactorioCalculations::Element* 
 
 void FactorioCalculator::calculateItem(const FactorioCalculations::Element* el, double rate, std::vector<FactorioCalculator::FactorySetup*>& factorySetup)
 {	
-	baseCalculateItem((FactorioCalculations::Item*)el, rate, factorySetup);
+	if (el->craftMethod != FactorioCalculations::CraftMethods::cPROCESS)
+		baseCalculateItem((FactorioCalculations::Item*)el, rate, factorySetup);
+	else
+		calculateProcess((FactorioCalculations::Item*) el, rate, factorySetup);
 }
 
 void FactorioCalculator::calculateAssemblyMachine(const FactorioCalculations::Element* el, double rate, std::vector<FactorySetup*>& factorySetup)
@@ -193,6 +196,46 @@ void FactorioCalculator::calculateTool(const FactorioCalculations::Element* el, 
 {
 	baseCalculateItem((FactorioCalculations::Item*)el, rate, factorySetup);
 }
+
+void FactorioCalculator::calculateProcess(const FactorioCalculations::Item* i, double rate, std::vector<FactorySetup*>& factorySetup)
+{
+	const std::vector<const FactorioCalculations::Process*> processes = jsonInterface.getProcessesThatMake(i);
+
+	//for each process that outputs the given item
+	for (const FactorioCalculations::Process* p : processes)
+	{
+		//for each assembler available to this process ***this will mess up if there are multiple processes that output the same thing ie: refineries***
+		for (const FactorioCalculations::Assembler* asmProcess : p->assemberOptions)
+		{
+			//for each assembler that can make the 
+			for (const FactorioCalculations::Assembler* asmItem : i->assemblerOptions)
+			{
+				if (!strcmp(asmItem->name, asmProcess->name))
+				{
+					//the rate that the item is produced in whatever assembler this is
+					double buildTime = FactorioCalculations::getBuildSpeed(asmItem, i);
+
+					//if this item is already in the factory, just modify the current setup
+					if (FactorySetup* fs = contains(factorySetup, i))
+					{
+						fs->chemicalPlants += rate / buildTime;
+					}
+					else
+					{
+						fs = new FactorySetup();
+						fs->element = i;
+						fs->chemicalPlants = rate / buildTime;
+
+						factorySetup.push_back(fs);
+					}
+				}
+			}
+		}
+	}
+
+}
+
+
 
 /*
 	given an item, calculate number of assemblers / furnaces required to produce it at rate
